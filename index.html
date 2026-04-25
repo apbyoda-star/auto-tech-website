@@ -354,6 +354,7 @@
       transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
     .service-card::before {
       content: '';
@@ -369,6 +370,24 @@
       box-shadow: 0 12px 40px rgba(0,0,0,0.35);
     }
     .service-card:hover::before { opacity: 1; }
+
+    .service-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .service-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 4px;
+      flex-shrink: 0;
+      margin-top: 16px;
+      transition: color var(--transition), transform var(--transition);
+    }
+    .service-card.open .service-toggle { color: var(--blue); transform: rotate(45deg); }
 
     .service-icon {
       width: 52px; height: 52px;
@@ -390,6 +409,58 @@
       font-size: 14px;
       color: var(--muted);
       line-height: 1.65;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.3s ease;
+    }
+    .service-card.open .service-desc {
+      max-height: 160px;
+      opacity: 1;
+      margin-top: 4px;
+    }
+
+    /* ─── Phone FAB ─── */
+    .phone-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 24px;
+      background: var(--blue);
+      color: var(--white);
+      padding: 14px 22px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 28px rgba(69,167,232,0.5);
+      text-decoration: none;
+      z-index: 900;
+      opacity: 0;
+      transform: translateY(28px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .phone-fab.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .phone-fab:hover { background: var(--blue-dark); box-shadow: 0 8px 32px rgba(69,167,232,0.6); }
+    .phone-fab.visible:hover { transform: translateY(-2px); }
+    @keyframes phone-ring {
+      0%, 45%, 100% { transform: rotate(0deg); }
+      5%  { transform: rotate(-18deg); }
+      10% { transform: rotate(18deg); }
+      15% { transform: rotate(-12deg); }
+      20% { transform: rotate(12deg); }
+      25% { transform: rotate(0deg); }
+    }
+    .phone-fab.visible .fab-phone-icon {
+      animation: phone-ring 6s ease 1.5s infinite;
+      display: inline-block;
     }
 
     /* ═══════════════════════════════════════════════
@@ -851,14 +922,9 @@
         <a href="#services">Services</a>
         <a href="#about">About</a>
         <a href="gallery.html">Our Work</a>
+        <a href="dvi.html">DVI</a>
         <a href="#contact">Contact</a>
       </div>
-      <a href="tel:5733787300" class="btn btn-primary nav-cta">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
-        </svg>
-        Call Now
-      </a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -867,6 +933,7 @@
       <a href="#services" class="mobile-link">Services</a>
       <a href="#about" class="mobile-link">About</a>
       <a href="gallery.html" class="mobile-link">Our Work</a>
+      <a href="dvi.html" class="mobile-link">DVI</a>
       <a href="#contact" class="mobile-link">Contact</a>
       <a href="tel:5733787300" class="btn btn-primary">Call 573-378-7300</a>
     </div>
@@ -921,12 +988,12 @@
   <div id="trust">
     <div class="container trust-inner">
       <div class="trust-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span>3-Year / 36K-Mile Warranty</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <span>Complimentary DVI Every Visit</span>
       </div>
       <div class="trust-item">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        <span>Certified Technicians</span>
+        <span>ASE Certified Technicians</span>
       </div>
       <div class="trust-item">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -954,67 +1021,75 @@
       <div class="services-grid">
 
         <div class="service-card reveal">
-          <div class="service-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M4.93 4.93a10 10 0 000 14.14"/></svg>
+          <div class="service-card-top">
+            <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M4.93 4.93a10 10 0 000 14.14"/></svg></div>
+            <div class="service-name">Oil Change &amp; Maintenance</div></div>
+            <button class="service-toggle" aria-label="Toggle details"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
-          <div class="service-name">Oil Change &amp; Maintenance</div>
           <div class="service-desc">Conventional and synthetic oil changes, fluid checks, and manufacturer-recommended maintenance schedules to keep your engine healthy.</div>
         </div>
 
         <div class="service-card reveal">
-          <div class="service-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+          <div class="service-card-top">
+            <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg></div>
+            <div class="service-name">Brake Service</div></div>
+            <button class="service-toggle" aria-label="Toggle details"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
-          <div class="service-name">Brake Service</div>
           <div class="service-desc">Pad and rotor replacements, brake fluid flushes, caliper service, and full brake system inspections for your safety.</div>
         </div>
 
         <div class="service-card reveal">
-          <div class="service-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          <div class="service-card-top">
+            <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+            <div class="service-name">Engine Repair</div></div>
+            <button class="service-toggle" aria-label="Toggle details"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
-          <div class="service-name">Engine Repair</div>
           <div class="service-desc">Diagnostics, tune-ups, timing belt replacements, gasket repairs, and comprehensive engine rebuilds for all makes and models.</div>
         </div>
 
         <div class="service-card reveal">
-          <div class="service-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="18" x2="11" y2="18"/></svg>
+          <div class="service-card-top">
+            <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="18" x2="11" y2="18"/></svg></div>
+            <div class="service-name">Advanced Electrical Diagnosis</div></div>
+            <button class="service-toggle" aria-label="Toggle details"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
-          <div class="service-name">Advanced Electrical Diagnosis</div>
           <div class="service-desc">In-depth electrical system diagnostics including wiring faults, sensor failures, charging issues, and complex module troubleshooting beyond standard OBD scanning.</div>
         </div>
 
         <div class="service-card reveal">
-          <div class="service-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <div class="service-card-top">
+            <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+            <div class="service-name">Diesel Repair</div></div>
+            <button class="service-toggle" aria-label="Toggle details"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
-          <div class="service-name">Diesel Repair</div>
           <div class="service-desc">Full-service diesel engine repair and maintenance for trucks and commercial vehicles, including fuel system service, injector work, and performance diagnostics.</div>
         </div>
 
         <div class="service-card reveal">
-          <div class="service-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+          <div class="service-card-top">
+            <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
+            <div class="service-name">AC &amp; Heating</div></div>
+            <button class="service-toggle" aria-label="Toggle details"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
-          <div class="service-name">AC &amp; Heating</div>
           <div class="service-desc">Refrigerant recharge, compressor repair, heater core service, and full climate control diagnostics for year-round comfort.</div>
         </div>
 
         <div class="service-card reveal">
-          <div class="service-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><path d="M3 6h4l2 4h8l2-4h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+          <div class="service-card-top">
+            <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><path d="M3 6h4l2 4h8l2-4h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div>
+            <div class="service-name">Transmission Service</div></div>
+            <button class="service-toggle" aria-label="Toggle details"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
-          <div class="service-name">Transmission Service</div>
           <div class="service-desc">Fluid changes, filter replacements, clutch repairs, and complete transmission rebuilds for automatic and manual vehicles.</div>
         </div>
 
         <div class="service-card reveal">
-          <div class="service-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          <div class="service-card-top">
+            <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><line x1="13" y1="16" x2="17" y2="16"/></svg></div>
+            <div class="service-name">Loaner Cars Available</div></div>
+            <button class="service-toggle" aria-label="Toggle details"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
-          <div class="service-name">Exhaust &amp; Muffler</div>
-          <div class="service-desc">Exhaust system inspections, catalytic converter replacement, muffler repair, and pipe welding to keep emissions in check.</div>
+          <div class="service-desc">Need to get on with your day? We offer loaner vehicles while your car is in the shop, so you're never left stranded. Subject to availability — ask us when you schedule.</div>
         </div>
 
       </div>
@@ -1039,7 +1114,7 @@
           <span class="section-label">About Us</span>
           <h2 class="section-heading">Honest Service, Backed by Experience</h2>
           <p class="section-sub">
-            Auto Tech Services is a family-owned and operated repair facility proudly serving the Versailles, MO community since 2010. Our certified and highly trained team is committed to keeping your vehicle safe and reliable.
+            Auto Tech Services is a family-owned and operated repair facility proudly serving the Versailles, MO community. Our certified and highly trained team is committed to keeping your vehicle safe and reliable.
           </p>
           <p class="section-sub" style="margin-top:12px;">
             We're grateful for the opportunity to serve our customers and strive to be a trustworthy solution for all your automotive needs.
@@ -1050,13 +1125,13 @@
               <div class="about-feature-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
-              <div class="about-feature-text">Certified Technicians</div>
+              <div class="about-feature-text">ASE Certified Technicians</div>
             </div>
             <div class="about-feature">
               <div class="about-feature-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
-              <div class="about-feature-text">Nationwide Warranty</div>
+              <div class="about-feature-text">Loaner Cars Available</div>
             </div>
             <div class="about-feature">
               <div class="about-feature-icon">
@@ -1126,6 +1201,82 @@
     </div>
   </section>
 
+  <!-- ═══ DVI TEASER ═══ -->
+  <section id="dvi-teaser" style="padding:80px 0; background:var(--dark-card); border-top:1px solid rgba(255,255,255,0.06);">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; flex-wrap:wrap;">
+        <div class="reveal">
+          <span class="section-label">Digital Vehicle Inspection</span>
+          <h2 class="section-heading">You See What We See</h2>
+          <p class="section-sub">Every vehicle that comes through our shop gets a complimentary Digital Vehicle Inspection — 25+ checkpoints, real photos of your vehicle, and color-coded results sent directly to you.</p>
+          <div style="display:flex; flex-direction:column; gap:14px; margin:28px 0 36px;">
+            <div style="display:flex; align-items:center; gap:12px; font-size:15px;">
+              <span style="width:10px;height:10px;border-radius:50%;background:#22c55e;flex-shrink:0;"></span>
+              <span style="color:var(--text);">Green = Checked &amp; Okay</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; font-size:15px;">
+              <span style="width:10px;height:10px;border-radius:50%;background:#f59e0b;flex-shrink:0;"></span>
+              <span style="color:var(--text);">Yellow = Keep an eye on it</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; font-size:15px;">
+              <span style="width:10px;height:10px;border-radius:50%;background:#ef4444;flex-shrink:0;"></span>
+              <span style="color:var(--text);">Red = Needs attention now</span>
+            </div>
+          </div>
+          <a href="dvi.html" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            See a Sample Report
+          </a>
+        </div>
+        <div class="reveal" style="background:#111c27; border:1px solid rgba(69,167,232,0.2); border-radius:14px; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,0.4);">
+          <div style="background:var(--blue); padding:10px 20px; font-size:13px; font-weight:700; color:#fff; display:flex; justify-content:space-between; align-items:center;">
+            <span>Digital Vehicle Inspection</span>
+            <span style="background:rgba(255,255,255,0.25); padding:3px 10px; border-radius:50px; font-size:11px; letter-spacing:0.1em;">SAMPLE</span>
+          </div>
+          <div style="padding:20px 20px 8px; border-bottom:1px solid rgba(255,255,255,0.07);">
+            <div style="font-size:14px; font-weight:700; color:var(--white);">John Doe — 2018 Honda Odyssey</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:4px;">Odometer: 196,471 mi · RO #48408</div>
+          </div>
+          <div style="display:flex; gap:0; border-bottom:1px solid rgba(255,255,255,0.07);">
+            <div style="flex:1; padding:16px 20px; text-align:center; border-right:1px solid rgba(255,255,255,0.07);">
+              <div style="font-size:22px; font-weight:800; color:#22c55e;">22</div>
+              <div style="font-size:11px; color:var(--muted); margin-top:2px;">Okay</div>
+            </div>
+            <div style="flex:1; padding:16px 20px; text-align:center; border-right:1px solid rgba(255,255,255,0.07);">
+              <div style="font-size:22px; font-weight:800; color:#f59e0b;">1</div>
+              <div style="font-size:11px; color:var(--muted); margin-top:2px;">Watch</div>
+            </div>
+            <div style="flex:1; padding:16px 20px; text-align:center;">
+              <div style="font-size:22px; font-weight:800; color:#ef4444;">1</div>
+              <div style="font-size:11px; color:var(--muted); margin-top:2px;">Attention</div>
+            </div>
+          </div>
+          <div style="padding:8px 0;">
+            <div style="display:flex; align-items:center; gap:12px; padding:10px 20px; border-bottom:1px solid rgba(255,255,255,0.04);">
+              <span style="width:20px;height:20px;border-radius:50%;background:rgba(34,197,94,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span style="font-size:13px; color:var(--text);">Battery — Tests good</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; padding:10px 20px; border-bottom:1px solid rgba(255,255,255,0.04);">
+              <span style="width:20px;height:20px;border-radius:50%;background:rgba(34,197,94,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span style="font-size:13px; color:var(--text);">Front Brakes — 6mm, adequate</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; padding:10px 20px; border-bottom:1px solid rgba(255,255,255,0.04);">
+              <span style="width:20px;height:20px;border-radius:50%;background:rgba(245,158,11,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg></span>
+              <span style="font-size:13px; color:#f59e0b;">Cabin Air Filter — Service soon</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; padding:10px 20px;">
+              <span style="width:20px;height:20px;border-radius:50%;background:rgba(239,68,68,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+              <span style="font-size:13px; color:#ef4444;">State Inspection — Due now</span>
+            </div>
+          </div>
+          <div style="padding:12px 20px; background:rgba(69,167,232,0.06); border-top:1px solid rgba(255,255,255,0.06); text-align:center;">
+            <a href="dvi.html" style="font-size:13px; color:var(--blue); font-weight:600;">View Full Sample Report →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ CONTACT ═══ -->
   <section id="contact">
     <div class="container">
@@ -1141,8 +1292,10 @@
             </div>
             <div>
               <div class="contact-detail-label">Address</div>
-              <div class="contact-detail-value">13431 State Route 52</div>
-              <div class="contact-detail-sub">Versailles, MO, USA</div>
+              <a href="https://maps.google.com/?q=Auto+Tech+Services+13431+State+Route+52+Versailles+MO+65084" target="_blank" rel="noopener" style="color:inherit;">
+                <div class="contact-detail-value">13431 State Route 52</div>
+                <div class="contact-detail-sub">Versailles, MO 65084</div>
+              </a>
             </div>
           </div>
 
@@ -1173,8 +1326,9 @@
 
           <div class="map-wrap reveal">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3118.0!2d-92.820522!3d38.4455582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDI2JzQ0LjAiTiA5MsKwNDknMTMuOSJX!5e0!3m2!1sen!2sus!4v1"
+              src="https://maps.google.com/maps?q=Auto+Tech+Services+13431+State+Route+52+Versailles+MO+65084&output=embed&z=15"
               loading="lazy"
+              allowfullscreen=""
               referrerpolicy="no-referrer-when-downgrade"
               title="Auto Tech Services location map"
             ></iframe>
@@ -1289,6 +1443,7 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="gallery.html">Our Work</a></li>
+            <li><a href="dvi.html">Digital Inspection (DVI)</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
           <div style="margin-top:20px;">
@@ -1325,6 +1480,18 @@
 
     // ─── Hero pan animation ───
     document.getElementById('hero').classList.add('loaded');
+
+    // ─── Service card accordion ───
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('click', () => card.classList.toggle('open'));
+    });
+
+    // ─── Phone FAB ───
+    let phoneFab;
+    window.addEventListener('scroll', () => {
+      if (!phoneFab) phoneFab = document.getElementById('phone-fab');
+      if (phoneFab) phoneFab.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
 
     // ─── Hamburger ───
     const hamburger = document.getElementById('hamburger');
@@ -1385,5 +1552,10 @@
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     }
   </script>
+
+  <a href="tel:5733787300" class="phone-fab" id="phone-fab" aria-label="Call Auto Tech Services">
+    <svg class="fab-phone-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+    <span>573-378-7300</span>
+  </a>
 </body>
 </html>
