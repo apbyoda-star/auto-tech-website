@@ -410,24 +410,18 @@
       font-size: 14px;
       color: var(--muted);
       line-height: 1.65;
-      max-height: 0;
-      overflow: hidden;
       opacity: 0;
-      transition: max-height 0.55s ease, opacity 0.45s ease, margin-top 0.45s ease;
+      margin-top: 8px;
+      transition: opacity 0.25s ease;
     }
 
-    /* Desktop: hover opens card */
+    /* Desktop: JS drives the wave; CSS just handles description + toggle on hover */
     @media (hover: hover) {
-      .service-card:hover {
-        border-color: rgba(69,167,232,0.4);
-        box-shadow: 0 10px 36px rgba(0,0,0,0.4);
+      .service-card {
+        transition: opacity 0.25s ease, transform 0.28s ease, border-color var(--transition), box-shadow var(--transition);
       }
-      .service-card:hover::before { opacity: 0.42; }
-      .service-card:hover .service-desc {
-        max-height: 160px;
-        opacity: 1;
-        margin-top: 8px;
-      }
+      .service-card:hover::before { opacity: 0.45; }
+      .service-card:hover .service-desc { opacity: 1; }
       .service-card:hover .service-toggle {
         color: var(--blue);
         transform: rotate(45deg);
@@ -444,7 +438,7 @@
         min-height: 260px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
       }
       /* Description fades in-place — position absolute so card height never changes */
       .service-desc {
@@ -456,6 +450,7 @@
         overflow: visible;
         margin-top: 0;
         opacity: 0;
+        color: rgba(255,255,255,0.92);
         transition: opacity 0.2s ease;
       }
       .service-card.wave-active { border-color: rgba(69,167,232,0.35); }
@@ -1543,13 +1538,45 @@
 
     // ─── Service card accordion ───
     // Mobile: -35% top+bottom margin = only cards in the central 30% of the screen activate.
-    // Cards are 260px min-height so two adjacent cards can't both be in that zone simultaneously.
     if (window.matchMedia('(hover: none)').matches) {
       const waveObs = new IntersectionObserver(
         entries => entries.forEach(e => e.target.classList.toggle('wave-active', e.isIntersecting)),
         { rootMargin: '-35% 0px -35% 0px', threshold: 0 }
       );
       document.querySelectorAll('.service-card').forEach(c => waveObs.observe(c));
+    }
+
+    // Desktop: wave/falloff — cards near cursor lift, farther cards recede smoothly
+    if (window.matchMedia('(hover: hover)').matches) {
+      const svcGrid = document.querySelector('.services-grid');
+      const svcCards = [...document.querySelectorAll('.service-card')];
+      const FALLOFF = 380;
+
+      function applyWave(mx, my) {
+        svcCards.forEach(card => {
+          const r = card.getBoundingClientRect();
+          const cx = r.left + r.width / 2;
+          const cy = r.top + r.height / 2;
+          const dist = Math.hypot(mx - cx, my - cy);
+          const raw = Math.max(0, 1 - dist / FALLOFF);
+          const t = raw * raw * (3 - 2 * raw); // smoothstep
+          card.style.transform   = `translateY(${(-12 * t).toFixed(1)}px) scale(${(1 + 0.025 * t).toFixed(3)})`;
+          card.style.opacity     = (0.35 + 0.65 * t).toFixed(2);
+          card.style.zIndex      = t > 0.5 ? 10 : '';
+          card.style.boxShadow   = t > 0.35 ? `0 ${Math.round(20*t)}px ${Math.round(50*t)}px rgba(0,0,0,${(0.5*t).toFixed(2)})` : '';
+          card.style.borderColor = t > 0.5 ? `rgba(69,167,232,${(0.55*t).toFixed(2)})` : '';
+        });
+      }
+
+      function resetCards() {
+        svcCards.forEach(card => {
+          card.style.transform = card.style.opacity = card.style.zIndex =
+          card.style.boxShadow = card.style.borderColor = '';
+        });
+      }
+
+      svcGrid.addEventListener('mousemove', e => applyWave(e.clientX, e.clientY));
+      svcGrid.addEventListener('mouseleave', resetCards);
     }
 
     // ─── Phone FAB ───
