@@ -413,7 +413,7 @@
       max-height: 0;
       overflow: hidden;
       opacity: 0;
-      transition: max-height 0.4s ease, opacity 0.35s ease, margin-top 0.35s ease;
+      transition: max-height 0.55s ease, opacity 0.45s ease, margin-top 0.45s ease;
     }
 
     /* Desktop: hover opens card */
@@ -1527,9 +1527,17 @@
     // ─── Service card accordion ───
     // Mobile wave — open card centered in viewport while scrolling
     if (window.matchMedia('(hover: none)').matches) {
+      const closeTimers = new Map();
       const waveObs = new IntersectionObserver(entries => {
-        entries.forEach(e => e.target.classList.toggle('wave-active', e.isIntersecting));
-      }, { rootMargin: '-28% 0px -28% 0px', threshold: 0 });
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            clearTimeout(closeTimers.get(e.target));
+            e.target.classList.add('wave-active');
+          } else {
+            closeTimers.set(e.target, setTimeout(() => e.target.classList.remove('wave-active'), 400));
+          }
+        });
+      }, { rootMargin: '-20% 0px -20% 0px', threshold: 0 });
       document.querySelectorAll('.service-card').forEach(c => waveObs.observe(c));
     }
 
