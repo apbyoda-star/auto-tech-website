@@ -434,42 +434,29 @@
       }
     }
 
-    /* Mobile: scroll-snap — one card fills the container, snaps into place */
+    /* Mobile: normal scroll, center-activated — only the card in the middle zone opens */
     @media (hover: none) {
       .services-grid {
         grid-template-columns: 1fr;
-        grid-auto-rows: 62vh;
-        height: 62vh;
-        overflow-y: scroll;
-        scroll-snap-type: y mandatory;
-        overscroll-behavior-y: contain;
-        -webkit-overflow-scrolling: touch;
-        gap: 0;
-        border-radius: var(--radius);
-        border: 1px solid rgba(255,255,255,0.08);
+        gap: 12px;
       }
       .service-card {
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-        border-radius: 0;
-        border: none;
-        border-bottom: 1px solid rgba(255,255,255,0.06);
+        min-height: 260px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        cursor: default;
       }
-      .service-card:last-child { border-bottom: none; }
-      /* Description fades in-place — no height change, no layout push */
+      /* Description fades in-place — position absolute so card height never changes */
       .service-desc {
         position: absolute;
-        bottom: 24px;
+        bottom: 22px;
         left: 24px;
         right: 24px;
         max-height: none;
         overflow: visible;
         margin-top: 0;
-        transition: opacity 0.45s ease;
+        opacity: 0;
+        transition: opacity 0.2s ease;
       }
       .service-card.wave-active { border-color: rgba(69,167,232,0.35); }
       .service-card.wave-active::before { opacity: 0.38; }
@@ -1555,12 +1542,12 @@
     document.getElementById('hero').classList.add('loaded');
 
     // ─── Service card accordion ───
-    // Mobile: grid is its own scroll-snap container; observe within it so only the snapped card opens
+    // Mobile: -35% top+bottom margin = only cards in the central 30% of the screen activate.
+    // Cards are 260px min-height so two adjacent cards can't both be in that zone simultaneously.
     if (window.matchMedia('(hover: none)').matches) {
-      const grid = document.querySelector('.services-grid');
       const waveObs = new IntersectionObserver(
         entries => entries.forEach(e => e.target.classList.toggle('wave-active', e.isIntersecting)),
-        { root: grid, threshold: 0.7 }
+        { rootMargin: '-35% 0px -35% 0px', threshold: 0 }
       );
       document.querySelectorAll('.service-card').forEach(c => waveObs.observe(c));
     }
