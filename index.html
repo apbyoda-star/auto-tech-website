@@ -434,20 +434,50 @@
       }
     }
 
-    /* Mobile: wave — centered card opens while scrolling */
-    .service-card.wave-active {
-      border-color: rgba(69,167,232,0.35);
-      box-shadow: 0 8px 28px rgba(0,0,0,0.35);
-    }
-    .service-card.wave-active::before { opacity: 0.38; }
-    .service-card.wave-active .service-desc {
-      max-height: 160px;
-      opacity: 1;
-      margin-top: 8px;
-    }
-    .service-card.wave-active .service-toggle {
-      color: var(--blue);
-      transform: rotate(45deg);
+    /* Mobile: scroll-snap — one card fills the container, snaps into place */
+    @media (hover: none) {
+      .services-grid {
+        grid-template-columns: 1fr;
+        height: 62vh;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        overscroll-behavior-y: contain;
+        -webkit-overflow-scrolling: touch;
+        gap: 0;
+        border-radius: var(--radius);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .service-card {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        min-height: 100%;
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        cursor: default;
+      }
+      .service-card:last-child { border-bottom: none; }
+      /* Description fades in-place — no height change, no layout push */
+      .service-desc {
+        position: absolute;
+        bottom: 24px;
+        left: 24px;
+        right: 24px;
+        max-height: none;
+        overflow: visible;
+        margin-top: 0;
+        transition: opacity 0.45s ease;
+      }
+      .service-card.wave-active { border-color: rgba(69,167,232,0.35); }
+      .service-card.wave-active::before { opacity: 0.38; }
+      .service-card.wave-active .service-desc { opacity: 1; }
+      .service-card.wave-active .service-toggle {
+        color: var(--blue);
+        transform: rotate(45deg);
+      }
     }
 
     /* ─── Phone FAB ─── */
@@ -1525,19 +1555,13 @@
     document.getElementById('hero').classList.add('loaded');
 
     // ─── Service card accordion ───
-    // Mobile wave — open card centered in viewport while scrolling
+    // Mobile: grid is its own scroll-snap container; observe within it so only the snapped card opens
     if (window.matchMedia('(hover: none)').matches) {
-      const closeTimers = new Map();
-      const waveObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            clearTimeout(closeTimers.get(e.target));
-            e.target.classList.add('wave-active');
-          } else {
-            closeTimers.set(e.target, setTimeout(() => e.target.classList.remove('wave-active'), 400));
-          }
-        });
-      }, { rootMargin: '-20% 0px -20% 0px', threshold: 0 });
+      const grid = document.querySelector('.services-grid');
+      const waveObs = new IntersectionObserver(
+        entries => entries.forEach(e => e.target.classList.toggle('wave-active', e.isIntersecting)),
+        { root: grid, threshold: 0.7 }
+      );
       document.querySelectorAll('.service-card').forEach(c => waveObs.observe(c));
     }
 
