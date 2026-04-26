@@ -142,7 +142,6 @@
       transition: color var(--transition), background var(--transition);
     }
     .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(69,167,232,0.15); }
-    .nav-cta { margin-left: 8px; }
 
     /* Hamburger */
     .hamburger {
@@ -335,43 +334,44 @@
        SERVICES
     ═══════════════════════════════════════════════ */
     #services {
-      padding: 100px 0;
+      padding: 80px 0;
       background: var(--dark);
     }
-    .services-header { text-align: center; margin-bottom: 60px; }
+    .services-header { text-align: center; margin-bottom: 44px; }
     .services-header .section-sub { margin: 0 auto; }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
     }
     .service-card {
       background: var(--dark-card);
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: var(--radius);
-      padding: 32px;
-      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      padding: 22px 24px;
+      transition: border-color var(--transition), box-shadow var(--transition);
       position: relative;
       overflow: hidden;
-      cursor: pointer;
+      cursor: default;
     }
+    /* Blurred background image layer */
     .service-card::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(69,167,232,0.06) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity var(--transition);
+      inset: -12px;
+      background-image: var(--svc-bg, none);
+      background-size: cover;
+      background-position: center;
+      filter: blur(1.5px);
+      opacity: 0.2;
+      z-index: 0;
+      transition: opacity 0.4s ease;
     }
-    .service-card:hover {
-      border-color: rgba(69,167,232,0.35);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
-    }
-    .service-card:hover::before { opacity: 1; }
 
     .service-card-top {
+      position: relative;
+      z-index: 2;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -380,44 +380,74 @@
     .service-toggle {
       background: none;
       border: none;
-      cursor: pointer;
       color: var(--muted);
       padding: 4px;
       flex-shrink: 0;
-      margin-top: 16px;
+      margin-top: 8px;
       transition: color var(--transition), transform var(--transition);
+      pointer-events: none;
     }
-    .service-card.open .service-toggle { color: var(--blue); transform: rotate(45deg); }
 
     .service-icon {
-      width: 52px; height: 52px;
-      background: rgba(69,167,232,0.12);
-      border-radius: 12px;
+      width: 44px; height: 44px;
+      background: rgba(69,167,232,0.15);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
       color: var(--blue);
     }
     .service-name {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
       color: var(--white);
-      margin-bottom: 10px;
+      margin-bottom: 0;
     }
     .service-desc {
+      position: relative;
+      z-index: 2;
       font-size: 14px;
       color: var(--muted);
       line-height: 1.65;
       max-height: 0;
       overflow: hidden;
       opacity: 0;
-      transition: max-height 0.35s ease, opacity 0.3s ease;
+      transition: max-height 0.4s ease, opacity 0.35s ease, margin-top 0.35s ease;
     }
-    .service-card.open .service-desc {
+
+    /* Desktop: hover opens card */
+    @media (hover: hover) {
+      .service-card:hover {
+        border-color: rgba(69,167,232,0.4);
+        box-shadow: 0 10px 36px rgba(0,0,0,0.4);
+      }
+      .service-card:hover::before { opacity: 0.42; }
+      .service-card:hover .service-desc {
+        max-height: 160px;
+        opacity: 1;
+        margin-top: 8px;
+      }
+      .service-card:hover .service-toggle {
+        color: var(--blue);
+        transform: rotate(45deg);
+      }
+    }
+
+    /* Mobile: wave — centered card opens while scrolling */
+    .service-card.wave-active {
+      border-color: rgba(69,167,232,0.35);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+    }
+    .service-card.wave-active::before { opacity: 0.38; }
+    .service-card.wave-active .service-desc {
       max-height: 160px;
       opacity: 1;
-      margin-top: 4px;
+      margin-top: 8px;
+    }
+    .service-card.wave-active .service-toggle {
+      color: var(--blue);
+      transform: rotate(45deg);
     }
 
     /* ─── Phone FAB ─── */
@@ -853,7 +883,7 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 767px) {
-      .nav-links, .nav-cta { display: none; }
+      .nav-links { display: none; }
       .hamburger { display: flex; }
       .hero-stats { gap: 24px; }
       .hero-stat-num { font-size: 26px; }
@@ -864,6 +894,7 @@
       .footer-bottom { flex-direction: column; align-items: flex-start; }
       .form-row { grid-template-columns: 1fr; }
       .contact-form-wrap { padding: 24px; }
+      .dvi-teaser-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
     }
     @media (max-width: 480px) {
       .hero-actions { flex-direction: column; }
@@ -1020,7 +1051,7 @@
       </div>
       <div class="services-grid">
 
-        <div class="service-card reveal">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Oil%20Change.jpg')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M4.93 4.93a10 10 0 000 14.14"/></svg></div>
             <div class="service-name">Oil Change &amp; Maintenance</div></div>
@@ -1029,7 +1060,7 @@
           <div class="service-desc">Conventional and synthetic oil changes, fluid checks, and manufacturer-recommended maintenance schedules to keep your engine healthy.</div>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Brake%20Job.jpeg')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg></div>
             <div class="service-name">Brake Service</div></div>
@@ -1038,7 +1069,7 @@
           <div class="service-desc">Pad and rotor replacements, brake fluid flushes, caliper service, and full brake system inspections for your safety.</div>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Engine%20.jpg')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
             <div class="service-name">Engine Repair</div></div>
@@ -1047,7 +1078,7 @@
           <div class="service-desc">Diagnostics, tune-ups, timing belt replacements, gasket repairs, and comprehensive engine rebuilds for all makes and models.</div>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Advanced%20Electrical%20Diag.webp')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="18" x2="11" y2="18"/></svg></div>
             <div class="service-name">Advanced Electrical Diagnosis</div></div>
@@ -1056,7 +1087,7 @@
           <div class="service-desc">In-depth electrical system diagnostics including wiring faults, sensor failures, charging issues, and complex module troubleshooting beyond standard OBD scanning.</div>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Diesel%20Repair.png')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
             <div class="service-name">Diesel Repair</div></div>
@@ -1065,7 +1096,7 @@
           <div class="service-desc">Full-service diesel engine repair and maintenance for trucks and commercial vehicles, including fuel system service, injector work, and performance diagnostics.</div>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/A%3Ac%20System%20Service.jpg')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
             <div class="service-name">AC &amp; Heating</div></div>
@@ -1074,7 +1105,7 @@
           <div class="service-desc">Refrigerant recharge, compressor repair, heater core service, and full climate control diagnostics for year-round comfort.</div>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Transmission%20Service.jpg')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><path d="M3 6h4l2 4h8l2-4h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div>
             <div class="service-name">Transmission Service</div></div>
@@ -1083,7 +1114,7 @@
           <div class="service-desc">Fluid changes, filter replacements, clutch repairs, and complete transmission rebuilds for automatic and manual vehicles.</div>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Loaner%20Car.jpg')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><line x1="13" y1="16" x2="17" y2="16"/></svg></div>
             <div class="service-name">Loaner Cars Available</div></div>
@@ -1204,23 +1235,35 @@
   <!-- ═══ DVI TEASER ═══ -->
   <section id="dvi-teaser" style="padding:80px 0; background:var(--dark-card); border-top:1px solid rgba(255,255,255,0.06);">
     <div class="container">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; flex-wrap:wrap;">
+      <div class="dvi-teaser-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
         <div class="reveal">
           <span class="section-label">Digital Vehicle Inspection</span>
-          <h2 class="section-heading">You See What We See</h2>
-          <p class="section-sub">Every vehicle that comes through our shop gets a complimentary Digital Vehicle Inspection — 25+ checkpoints, real photos of your vehicle, and color-coded results sent directly to you.</p>
-          <div style="display:flex; flex-direction:column; gap:14px; margin:28px 0 36px;">
-            <div style="display:flex; align-items:center; gap:12px; font-size:15px;">
-              <span style="width:10px;height:10px;border-radius:50%;background:#22c55e;flex-shrink:0;"></span>
-              <span style="color:var(--text);">Green = Checked &amp; Okay</span>
+          <h2 class="section-heading">See Exactly What We See</h2>
+          <p class="section-sub" style="margin-bottom:28px;">Gone are the days of a technician describing your vehicle's condition over the phone. Every vehicle that comes through our shop gets a complimentary Digital Vehicle Inspection — real photos, color-coded results, and a full report sent straight to your phone or email. You decide what gets fixed and when. No pressure, ever.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:36px;">
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <span style="flex-shrink:0; width:32px; height:32px; border-radius:8px; background:rgba(69,167,232,0.12); display:flex; align-items:center; justify-content:center; color:var(--blue);">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </span>
+              <div><div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:2px;">Transparency</div><div style="font-size:12px; color:var(--muted);">See exactly what our technicians see</div></div>
             </div>
-            <div style="display:flex; align-items:center; gap:12px; font-size:15px;">
-              <span style="width:10px;height:10px;border-radius:50%;background:#f59e0b;flex-shrink:0;"></span>
-              <span style="color:var(--text);">Yellow = Keep an eye on it</span>
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <span style="flex-shrink:0; width:32px; height:32px; border-radius:8px; background:rgba(69,167,232,0.12); display:flex; align-items:center; justify-content:center; color:var(--blue);">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </span>
+              <div><div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:2px;">Detailed Report</div><div style="font-size:12px; color:var(--muted);">Full breakdown, prioritized by urgency</div></div>
             </div>
-            <div style="display:flex; align-items:center; gap:12px; font-size:15px;">
-              <span style="width:10px;height:10px;border-radius:50%;background:#ef4444;flex-shrink:0;"></span>
-              <span style="color:var(--text);">Red = Needs attention now</span>
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <span style="flex-shrink:0; width:32px; height:32px; border-radius:8px; background:rgba(69,167,232,0.12); display:flex; align-items:center; justify-content:center; color:var(--blue);">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+              </span>
+              <div><div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:2px;">Your Decision</div><div style="font-size:12px; color:var(--muted);">Know what's urgent and what can wait</div></div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <span style="flex-shrink:0; width:32px; height:32px; border-radius:8px; background:rgba(69,167,232,0.12); display:flex; align-items:center; justify-content:center; color:var(--blue);">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </span>
+              <div><div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:2px;">Convenient</div><div style="font-size:12px; color:var(--muted);">Review and respond from your phone</div></div>
             </div>
           </div>
           <a href="dvi.html" class="btn btn-primary">
@@ -1482,9 +1525,13 @@
     document.getElementById('hero').classList.add('loaded');
 
     // ─── Service card accordion ───
-    document.querySelectorAll('.service-card').forEach(card => {
-      card.addEventListener('click', () => card.classList.toggle('open'));
-    });
+    // Mobile wave — open card centered in viewport while scrolling
+    if (window.matchMedia('(hover: none)').matches) {
+      const waveObs = new IntersectionObserver(entries => {
+        entries.forEach(e => e.target.classList.toggle('wave-active', e.isIntersecting));
+      }, { rootMargin: '-28% 0px -28% 0px', threshold: 0 });
+      document.querySelectorAll('.service-card').forEach(c => waveObs.observe(c));
+    }
 
     // ─── Phone FAB ───
     let phoneFab;

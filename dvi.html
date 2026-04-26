@@ -133,7 +133,6 @@
     }
     .nav-links a:hover { color: var(--white); background: rgba(69,167,232,0.15); }
     .nav-links a.active { color: var(--white); background: rgba(69,167,232,0.18); }
-    .nav-cta { margin-left: 8px; }
 
     .hamburger {
       display: none;
@@ -179,18 +178,6 @@
     .mobile-menu .btn { margin-top: 8px; justify-content: center; }
 
     /* ─── PAGE HERO ─── */
-    .page-hero {
-      padding: calc(var(--nav-h) + 60px) 0 60px;
-      background: var(--dark-card);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .page-hero-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
     .breadcrumb {
       display: flex;
       align-items: center;
@@ -776,7 +763,7 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 767px) {
-      .nav-links, .nav-cta { display: none; }
+      .nav-links { display: none; }
       .hamburger { display: flex; }
       .dvi-summary-card { padding: 28px 24px; }
       .inspect-item { grid-template-columns: 28px 1fr; }
@@ -819,49 +806,42 @@
     </div>
   </nav>
 
-  <!-- ═══ PAGE HERO ═══ -->
-  <div class="page-hero">
+  <!-- ═══ DVI SUMMARY ═══ -->
+  <section id="dvi-summary" style="padding-top:48px;">
     <div class="container">
-      <div class="breadcrumb">
+      <div class="breadcrumb" style="margin-bottom:32px;">
         <a href="index.html">Home</a>
         <span class="breadcrumb-sep">›</span>
         <span>Digital Vehicle Inspection</span>
       </div>
-      <div class="page-hero-inner">
-        <div>
-          <span class="section-label">Total Transparency</span>
-          <h1 class="section-heading">See Exactly What We See</h1>
-          <p class="section-sub">Every vehicle that comes through our doors gets a complimentary Digital Vehicle Inspection — a photo-documented, color-coded report of your vehicle's health, sent straight to you.</p>
-        </div>
-        <a href="index.html#contact" class="btn btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-          Schedule Service
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ DVI SUMMARY ═══ -->
-  <section id="dvi-summary">
-    <div class="container">
       <div class="dvi-summary-card reveal">
         <div class="dvi-summary-left">
           <span class="section-label">What Is A DVI?</span>
           <h2>No Surprises. No Pressure.</h2>
-          <p>Every vehicle that comes through our shop gets a complimentary Digital Vehicle Inspection — a detailed check performed by our ASE Certified technicians, with real photos and clear results sent straight to you.</p>
+          <p>Gone are the days of a technician trying to describe your vehicle's issues over the phone. During our comprehensive digital inspection, our ASE Certified technicians scrutinize your vehicle bumper-to-bumper and document each finding with real photos.</p>
+          <p style="margin-top:14px;">When the inspection is complete, we send you a detailed report by text or email — so you see exactly what we see, with your own eyes. You can research the findings, ask questions, and decide which repairs to complete now and which to save for later. No pressure, ever.</p>
+          <p style="margin-top:14px;">And the value only grows over time. Each visit builds a documented history of your vehicle's health, so you can track changes, catch small problems before they become expensive ones, and stay ahead of maintenance — not behind it.</p>
         </div>
         <ul class="dvi-bullets">
           <li>
             <span class="bullet-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            25+ point inspection on every single visit
+            25+ point inspection on every single visit — bumper to bumper
           </li>
           <li>
             <span class="bullet-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Real photos document each finding so you see exactly what we see
+            Real photos document every finding so you see exactly what we see
           </li>
           <li>
             <span class="bullet-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Color-coded results: Green = OK &nbsp;·&nbsp; Yellow = Watch it &nbsp;·&nbsp; Red = Needs attention
+            Color-coded results: Green = OK &nbsp;·&nbsp; Yellow = Watch it &nbsp;·&nbsp; Red = Needs attention now
+          </li>
+          <li>
+            <span class="bullet-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Full report delivered by text or email — review it from your phone
+          </li>
+          <li>
+            <span class="bullet-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Know what needs immediate attention and what can wait
           </li>
           <li>
             <span class="bullet-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
@@ -869,7 +849,7 @@
           </li>
           <li>
             <span class="bullet-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Report delivered digitally to your phone or email
+            Builds a health history for your vehicle — track changes visit over visit
           </li>
           <li>
             <span class="bullet-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
@@ -877,7 +857,7 @@
           </li>
           <li>
             <span class="bullet-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Your decision on all repairs — we show you, you choose. No pressure, ever.
+            Your decision on all repairs — we show you, you choose
           </li>
         </ul>
       </div>
