@@ -588,6 +588,90 @@
       line-height: 1.7;
       font-style: italic;
     }
+    .about-facility {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 56px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .facility-copy p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .facility-copy strong { color: var(--text); }
+    .gg-link {
+      color: var(--blue);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1.5px dashed rgba(69,167,232,0.55);
+      border-radius: 3px;
+      transition: box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+    }
+    .gg-link:hover {
+      background: rgba(69,167,232,0.13);
+      box-shadow: 0 0 0 6px rgba(69,167,232,0.13);
+      border-bottom-color: transparent;
+    }
+    .facility-hint {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--muted); opacity: 0.55;
+      margin-top: 20px; user-select: none;
+    }
+    .facility-stack-wrap {
+      display: flex; align-items: center; justify-content: center;
+      height: 300px;
+    }
+    .facility-stack {
+      position: relative;
+      width: 260px; height: 260px;
+      cursor: pointer;
+    }
+    .fstack-card {
+      position: absolute; inset: 0;
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      transition: transform 0.38s cubic-bezier(0.34,1.3,0.64,1), opacity 0.3s ease;
+      will-change: transform;
+    }
+    .fstack-card img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      pointer-events: none;
+    }
+    @media (max-width: 720px) {
+      .about-facility { grid-template-columns: 1fr; gap: 36px; }
+      .facility-stack-wrap { height: 250px; }
+      .facility-stack { width: 220px; height: 220px; }
+    }
+    /* Clickable photo lightbox */
+    img[data-lb] { cursor: zoom-in; transition: filter 0.2s ease; }
+    img[data-lb]:hover { filter: brightness(1.1); }
+    .photo-lb-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.9); z-index: 9000;
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    .photo-lb-overlay.open { display: flex; }
+    .photo-lb-overlay img {
+      max-width: 100%; max-height: 90vh;
+      object-fit: contain; border-radius: 8px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+    }
+    .photo-lb-close {
+      position: fixed; top: 18px; right: 18px;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #fff; font-size: 20px; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s ease;
+    }
+    .photo-lb-close:hover { background: rgba(255,255,255,0.25); }
 
     /* ═══════════════════════════════════════════════
        WARRANTY BANNER
@@ -858,7 +942,7 @@
     .teaser-header .section-sub { margin: 0 auto 32px; }
     .teaser-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 16px;
       margin-bottom: 40px;
     }
@@ -949,6 +1033,8 @@
     "hasMap": "https://www.google.com/maps?q=38.4455582,-92.820522"
   }
   </script>
+  <script>window.va = window.va || function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -1066,19 +1152,19 @@
         <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Oil%20Change.jpg')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M4.93 4.93a10 10 0 000 14.14"/></svg></div>
-            <div class="service-name">Oil Change &amp; Maintenance</div></div>
+            <div class="service-name">Maintenance &amp; Brakes</div></div>
             <button class="service-toggle" aria-label="Toggle details"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
-          <div class="service-desc">Conventional and synthetic oil changes, fluid checks, and manufacturer-recommended maintenance schedules to keep your engine healthy.</div>
+          <div class="service-desc">Oil changes, fluid checks, and manufacturer-recommended maintenance schedules — plus pad and rotor replacements, brake fluid flushes, caliper service, and full brake system inspections.</div>
         </div>
 
-        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Brake%20Job.jpeg')">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Key%20programming%20card%20.JPG')">
           <div class="service-card-top">
-            <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg></div>
-            <div class="service-name">Brake Service</div></div>
+            <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 2-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
+            <div class="service-name">Key Cutting &amp; Programming</div></div>
             <button class="service-toggle" aria-label="Toggle details"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
-          <div class="service-desc">Pad and rotor replacements, brake fluid flushes, caliper service, and full brake system inspections for your safety.</div>
+          <div class="service-desc">Licensed locksmith facility offering key cutting and OEM transponder &amp; proximity fob programming for most makes and models. Lost your only key? We've got you covered.</div>
         </div>
 
         <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Engine%20.jpg')">
@@ -1132,7 +1218,7 @@
             <div class="service-name">Loaner Cars Available</div></div>
             <button class="service-toggle" aria-label="Toggle details"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
-          <div class="service-desc">Need to get on with your day? We offer loaner vehicles while your car is in the shop, so you're never left stranded. Subject to availability — ask us when you schedule.</div>
+          <div class="service-desc">Drop it off and relax in our clean waiting room with complimentary coffee — or step next door to Gathering Grounds. Loaner vehicles also available. Subject to availability — ask when you schedule.</div>
         </div>
 
       </div>
@@ -1146,6 +1232,7 @@
         <div class="about-img-wrap reveal">
           <img
             src="Photos/Team Photo.JPG"
+            data-lb="Photos/Team Photo.JPG"
             alt="The Auto Tech Services team"
           />
           <div class="about-img-badge">
@@ -1197,6 +1284,30 @@
           <a href="#contact" class="btn btn-primary">Schedule Service</a>
         </div>
       </div>
+      <div class="about-facility reveal">
+        <div class="facility-copy">
+          <span class="section-label">Our Facility</span>
+          <p>We take pride in maintaining a clean, well-organized shop and a front office that feels comfortable and inviting. Our space reflects how we care for our customers and their vehicles — with attention to detail, respect, and consistency.</p>
+          <p>Right next door is <a href="https://ggcoffeeco.com" target="_blank" rel="noopener noreferrer" class="gg-link">Gathering Grounds Coffee Co.</a>, a local favorite. Feel free to stop in, grab a coffee, and relax while we take care of your vehicle.</p>
+          <div class="facility-hint">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            Tap or swipe to browse
+          </div>
+        </div>
+        <div class="facility-stack-wrap">
+          <div class="facility-stack" id="facilityStack" aria-label="Browse facility photos">
+            <div class="fstack-card">
+              <img src="Photos/Waiting%20room%20and%20reception%20area/A7301838.JPG" alt="Complimentary coffee station" loading="lazy">
+            </div>
+            <div class="fstack-card">
+              <img src="Photos/Waiting%20room%20and%20reception%20area/A7301836.JPG" alt="Clean and comfortable waiting room" loading="lazy">
+            </div>
+            <div class="fstack-card">
+              <img src="Photos/Waiting%20room%20and%20reception%20area/Reception%201.JPG" alt="Auto Tech Services reception area" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1222,16 +1333,20 @@
     <div class="container">
       <div class="teaser-header reveal">
         <span class="section-label">Our Work</span>
-        <h2 class="section-heading">See What We Do</h2>
-        <p class="section-sub">A look inside the shop — from complex engine work to major drivetrain jobs. Real repairs, real results.</p>
+        <h2 class="section-heading">The Work Speaks for Itself</h2>
+        <p class="section-sub">Engine rebuilds, diesel, advanced electrical, key programming — a look at what comes through our bays every day.</p>
       </div>
       <div class="teaser-grid">
         <div class="teaser-img reveal">
-          <img src="Photos/Gallery Images/IMG_2566.JPG" alt="Ford truck on lift with body separated from frame" loading="lazy" />
+          <img src="Photos/Gallery Images/A7301847.JPG" alt="Technician working under the hood of a Ford F-250" loading="lazy" />
           <div class="teaser-img-overlay"></div>
         </div>
         <div class="teaser-img reveal">
-          <img src="Photos/Gallery Images/IMG_2555.JPG" alt="Engine disassembly and repair work" loading="lazy" />
+          <img src="Photos/Gallery Images/Key programming card .JPG" alt="OEM key programming setup with Autel programmer" loading="lazy" />
+          <div class="teaser-img-overlay"></div>
+        </div>
+        <div class="teaser-img reveal">
+          <img src="Photos/Gallery Images/IMG_2566.JPG" alt="Ford diesel truck on lift with cab separated from frame" loading="lazy" />
           <div class="teaser-img-overlay"></div>
         </div>
       </div>
@@ -1526,6 +1641,12 @@
     </div>
   </footer>
 
+  <!-- Photo lightbox overlay (must be before the script block) -->
+  <div class="photo-lb-overlay" id="photoLb">
+    <button class="photo-lb-close" id="photoLbClose" aria-label="Close photo">&#x2715;</button>
+    <img id="photoLbImg" src="" alt="">
+  </div>
+
   <script>
     // ─── Nav scroll effect ───
     const nav = document.getElementById('nav');
@@ -1644,6 +1765,53 @@
       document.getElementById('form-success').style.display = 'block';
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     }
+
+    // Facility photo stack
+    (function() {
+      const stackEl = document.getElementById('facilityStack');
+      if (!stackEl) return;
+      let cards = [...stackEl.querySelectorAll('.fstack-card')];
+      const POS = [
+        { transform: 'rotate(-6deg) translate(-16px, 14px)', zIndex: 1, opacity: 0.6  },
+        { transform: 'rotate(4deg)  translate(12px, -10px)', zIndex: 2, opacity: 0.8  },
+        { transform: 'rotate(-1deg) translate(0px, 0px)',    zIndex: 3, opacity: 1    },
+      ];
+      function applyPos() {
+        cards.forEach((c, i) => {
+          c.style.transform = POS[i].transform;
+          c.style.zIndex    = POS[i].zIndex;
+          c.style.opacity   = POS[i].opacity;
+        });
+      }
+      applyPos();
+      function advance() { cards.unshift(cards.pop()); applyPos(); }
+      stackEl.addEventListener('click', advance);
+      let tx = 0;
+      stackEl.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+      stackEl.addEventListener('touchend',   e => { if (tx - e.changedTouches[0].clientX > 35) advance(); }, { passive: true });
+    })();
+
+    // Photo lightbox
+    (function() {
+      const overlay = document.getElementById('photoLb');
+      const lbImg   = document.getElementById('photoLbImg');
+      document.querySelectorAll('img[data-lb]').forEach(img => {
+        img.addEventListener('click', () => {
+          lbImg.src = img.dataset.lb;
+          lbImg.alt = img.alt;
+          overlay.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+      function closeLb() {
+        overlay.classList.remove('open');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+      }
+      document.getElementById('photoLbClose').addEventListener('click', closeLb);
+      overlay.addEventListener('click', e => { if (e.target === overlay) closeLb(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+    })();
   </script>
 
   <a href="tel:5733787300" class="phone-fab" id="phone-fab" aria-label="Call Auto Tech Services">

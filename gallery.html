@@ -507,6 +507,8 @@
     }
     .phone-fab.visible .fab-phone-icon { animation: phone-ring 6s ease 1.5s infinite; display: inline-block; }
   </style>
+  <script>window.va = window.va || function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -571,7 +573,7 @@
         <button class="filter-btn active" data-filter="all">All Work</button>
         <button class="filter-btn" data-filter="engine">Engine</button>
         <button class="filter-btn" data-filter="diesel">Diesel</button>
-        <button class="filter-btn" data-filter="electrical">Electrical</button>
+        <button class="filter-btn" data-filter="electrical">Electrical Diagnosis</button>
         <button class="filter-btn" data-filter="drivetrain">Drivetrain</button>
       </div>
 
@@ -584,24 +586,24 @@
           3. Update src="...", the caption, and data-category to match
           4. Add any new category to the filter-bar buttons above
 
-          data-category options: engine | diesel | electrical | drivetrain
+          data-category options: engine | diesel | electrical | drivetrain  (electrical = Electrical Diagnosis)
           Layout modifiers (optional): add class "tall" to make a card double-height,
                                        add class "wide" to make it double-width
         -->
 
-        <!-- Photo 1: Shop interior / drivetrain -->
-        <div class="gallery-item tall reveal" data-category="drivetrain">
+        <!-- Photo 1: Diesel — cab lift -->
+        <div class="gallery-item tall reveal" data-category="diesel">
           <div class="gallery-img-wrap">
             <img
               src="Photos/Gallery Images/IMG_2566.JPG"
-              alt="Ford truck on lift with cab separated from frame"
+              alt="Ford diesel truck on lift with cab separated from frame"
               loading="lazy"
             />
           </div>
           <div class="gallery-overlay">
             <div class="gallery-overlay-content">
-              <span class="gallery-caption">Full Frame Separation — Ford F-250</span>
-              <span class="gallery-tag">Drivetrain</span>
+              <span class="gallery-caption">Cab Lift — Ford Diesel Heavy Repair</span>
+              <span class="gallery-tag">Diesel</span>
             </div>
           </div>
           <div class="gallery-zoom-icon">
@@ -629,21 +631,151 @@
           </div>
         </div>
 
-        <!-- Placeholder slots — replace with real photos as you add them -->
-        <div class="gallery-placeholder reveal" data-category="engine">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <p>More engine photos<br />coming soon</p>
+        <!-- Diesel photos -->
+        <div class="gallery-item tall reveal" data-category="diesel">
+          <div class="gallery-img-wrap">
+            <img src="Photos/Gallery Images/A7301812 - Copy.JPG" alt="Technician working on diesel engine bay during engine removal" loading="lazy" />
+          </div>
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <span class="gallery-caption">Diesel Engine Removal — Deep Service</span>
+              <span class="gallery-tag">Diesel</span>
+            </div>
+          </div>
+          <div class="gallery-zoom-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
         </div>
 
-        <div class="gallery-placeholder reveal" data-category="diesel">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <p>Diesel repair photos<br />coming soon</p>
+        <div class="gallery-item reveal" data-category="diesel">
+          <div class="gallery-img-wrap">
+            <img src="Photos/Gallery Images/A7301814.JPG" alt="Diesel engine removed from vehicle on stand for rebuild" loading="lazy" />
+          </div>
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <span class="gallery-caption">Diesel Engine Out — Full Rebuild</span>
+              <span class="gallery-tag">Diesel</span>
+            </div>
+          </div>
+          <div class="gallery-zoom-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
         </div>
 
-        <div class="gallery-placeholder reveal" data-category="electrical">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <p>Electrical diagnosis photos<br />coming soon</p>
+        <div class="gallery-item reveal" data-category="engine">
+          <div class="gallery-img-wrap">
+            <img src="Photos/Gallery Images/Engine 1.JPG" alt="Clean engine assembly showing timing, water pump and intake components" loading="lazy" />
+          </div>
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <span class="gallery-caption">Engine Assembly — Timing & Cooling System</span>
+              <span class="gallery-tag">Engine</span>
+            </div>
+          </div>
+          <div class="gallery-zoom-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
         </div>
+
+        <div class="gallery-item reveal" data-category="engine">
+          <div class="gallery-img-wrap">
+            <img src="Photos/Gallery Images/Engine 2.JPG" alt="Close-up of engine component with Made in USA label" loading="lazy" />
+          </div>
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <span class="gallery-caption">Quality Parts — American-Made Components</span>
+              <span class="gallery-tag">Engine</span>
+            </div>
+          </div>
+          <div class="gallery-zoom-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+
+        <!-- Electrical Diagnosis photos -->
+        <div class="gallery-item tall reveal" data-category="electrical">
+          <div class="gallery-img-wrap">
+            <img src="Photos/Gallery Images/Electrical Diag.JPG" alt="Technician accessing dashboard wiring for electrical diagnosis" loading="lazy" />
+          </div>
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <span class="gallery-caption">Dashboard Access — Electrical Diagnosis</span>
+              <span class="gallery-tag">Electrical Diagnosis</span>
+            </div>
+          </div>
+          <div class="gallery-zoom-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+
+        <div class="gallery-item reveal" data-category="electrical">
+          <div class="gallery-img-wrap">
+            <img src="Photos/Gallery Images/Electrical Diag 1.JPG" alt="Wiring harness with test leads identifying electrical fault" loading="lazy" />
+          </div>
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <span class="gallery-caption">Wiring Harness — Fault Source Identification</span>
+              <span class="gallery-tag">Electrical Diagnosis</span>
+            </div>
+          </div>
+          <div class="gallery-zoom-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+
+        <div class="gallery-item reveal" data-category="electrical">
+          <div class="gallery-img-wrap">
+            <img src="Photos/Gallery Images/Electrical Diag 2.JPG" alt="Engine bay ECU and wiring harness inspection" loading="lazy" />
+          </div>
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <span class="gallery-caption">ECU & Harness — Engine Bay Wiring Inspection</span>
+              <span class="gallery-tag">Electrical Diagnosis</span>
+            </div>
+          </div>
+          <div class="gallery-zoom-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+
+        <div class="gallery-item reveal" data-category="electrical">
+          <div class="gallery-img-wrap">
+            <img src="Photos/Gallery Images/Key programming card .JPG" alt="Autel OEM key programmer connected to vehicle with instrument cluster" loading="lazy" />
+          </div>
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <span class="gallery-caption">Key Programming — Autel OEM Setup</span>
+              <span class="gallery-tag">Electrical Diagnosis</span>
+            </div>
+          </div>
+          <div class="gallery-zoom-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+
+        <div class="gallery-item reveal" data-category="electrical">
+          <div class="gallery-img-wrap">
+            <img src="Photos/Gallery Images/A7301845.JPG" alt="Instrument cluster displaying key not detected during programming diagnosis" loading="lazy" />
+          </div>
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <span class="gallery-caption">Instrument Cluster — Key Programming Diagnosis</span>
+              <span class="gallery-tag">Electrical Diagnosis</span>
+            </div>
+          </div>
+          <div class="gallery-zoom-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+
+        <div class="gallery-item reveal" data-category="engine">
+          <div class="gallery-img-wrap">
+            <img src="Photos/Gallery Images/A7301847.JPG" alt="Technician working under the hood of a white Ford F-250" loading="lazy" />
+          </div>
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <span class="gallery-caption">Ford F-250 — Under Hood Service</span>
+              <span class="gallery-tag">Engine</span>
+            </div>
+          </div>
+          <div class="gallery-zoom-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+
+        <div class="gallery-item reveal" data-category="engine">
+          <div class="gallery-img-wrap">
+            <img src="Photos/Gallery Images/A7301850.JPG" alt="Technician hands working on engine components under the hood" loading="lazy" />
+          </div>
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <span class="gallery-caption">Engine Work — Hands On</span>
+              <span class="gallery-tag">Engine</span>
+            </div>
+          </div>
+          <div class="gallery-zoom-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+
 
       </div>
     </div>
