@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vehicle Questionnaire | Auto Tech Services — Versailles, MO</title>
+  <meta name="description" content="Help us diagnose your vehicle faster. Fill out our questionnaire and we'll review it before your appointment." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://autotechmo.com/questionnaire.html" />
+  <meta property="og:title" content="Vehicle Questionnaire | Auto Tech Services" />
+  <meta property="og:description" content="Describe what your vehicle is doing before you come in. Helps us diagnose faster and get you back on the road sooner." />
+  <meta property="og:image" content="https://img1.wsimg.com/isteam/ip/d6d77ac7-cfc3-4df6-aa07-492a58c0a00e/Auto%20Tech%20Pic%20Edited%20by%20Chat.png" />
+  <link rel="canonical" href="https://autotechmo.com/questionnaire.html" />
+  <link rel="icon" type="image/png" href="https://img1.wsimg.com/isteam/ip/d6d77ac7-cfc3-4df6-aa07-492a58c0a00e/Auto%20Tech%20Pic%20Edited%20by%20Chat.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:       #45A7E8;
+      --blue-dark:  #2882c4;
+      --dark:       #0f1923;
+      --dark-card:  #182130;
+      --mid:        #2a3a4a;
+      --white:      #ffffff;
+      --text:       #e2eaf2;
+      --muted:      #8fa8c0;
+      --green:      #22c55e;
+      --radius:     12px;
+      --shadow:     0 4px 24px rgba(0,0,0,0.35);
+      --transition: 0.3s ease;
+      --nav-h:      72px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+    /* ─── Nav ─── */
+    #nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 1000; background: rgba(15,25,35,0.95); backdrop-filter: blur(12px); box-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: var(--nav-h); max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .nav-logo img { height: 52px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a { padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; color: var(--text); text-decoration: none; transition: color var(--transition), background var(--transition); }
+    .nav-links a:hover { color: var(--white); background: rgba(69,167,232,0.15); }
+    .nav-links a.active { color: var(--white); background: rgba(69,167,232,0.18); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-trigger { display: flex; align-items: center; gap: 4px; }
+    .nav-dropdown-trigger svg { transition: transform 0.2s ease; }
+    .nav-dropdown:hover .nav-dropdown-trigger svg { transform: rotate(180deg); }
+    .nav-dropdown-menu { display: none; position: absolute; top: 100%; right: 0; background: var(--dark-card); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; min-width: 210px; padding: 14px 6px 6px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 200; }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-menu a { display: block; padding: 10px 14px; border-radius: 7px; color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s ease, background 0.3s ease; }
+    .nav-dropdown-menu a:hover { color: var(--white); background: rgba(69,167,232,0.12); }
+    .nav-dropdown-menu a.active { color: var(--blue); }
+    .btn-book-nav { padding: 9px 18px; border-radius: 999px; background: var(--blue); color: var(--white); border: none; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s ease; margin-left: 6px; }
+    .btn-book-nav:hover { background: var(--blue-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: rgba(15,25,35,0.98); backdrop-filter: blur(16px); padding: 24px; flex-direction: column; gap: 4px; z-index: 999; border-top: 1px solid rgba(255,255,255,0.08); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { padding: 14px 16px; border-radius: 8px; font-weight: 600; font-size: 16px; text-decoration: none; color: var(--text); transition: background var(--transition); }
+    .mobile-menu a:hover { background: rgba(69,167,232,0.12); }
+    .mobile-menu .btn { margin-top: 8px; justify-content: center; }
+    @media (max-width: 767px) { .nav-links { display: none; } .hamburger { display: flex; } .btn-book-nav { display: none; } }
+
+    /* ─── Layout ─── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-label { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+
+    /* ─── Page Header ─── */
+    .page-header { padding: calc(var(--nav-h) + 52px) 0 44px; background: var(--dark-card); border-bottom: 1px solid rgba(255,255,255,0.07); text-align: center; }
+    .page-title { font-family: 'Merriweather', serif; font-size: clamp(26px, 5vw, 40px); font-weight: 900; color: var(--white); line-height: 1.2; margin-bottom: 14px; }
+    .page-sub { font-size: 15px; color: var(--muted); max-width: 580px; margin: 0 auto; line-height: 1.7; }
+
+    /* ─── Questionnaire ─── */
+    .q-wrap { padding: 52px 0 80px; }
+
+    /* Tabs */
+    .q-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 32px; background: var(--dark-card); border-radius: 12px; padding: 6px; border: 1px solid rgba(255,255,255,0.07); }
+    .q-tab { padding: 11px 8px; border-radius: 8px; border: none; background: none; color: var(--muted); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; text-align: center; font-family: 'Inter', sans-serif; line-height: 1.3; }
+    .q-tab:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .q-tab.active { background: var(--blue); color: var(--white); box-shadow: 0 4px 16px rgba(69,167,232,0.3); }
+    @media (max-width: 580px) { .q-tabs { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 360px) { .q-tabs { grid-template-columns: 1fr; } }
+
+    /* Cards & Sections */
+    .q-card { background: var(--dark-card); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 26px 28px; margin-bottom: 16px; }
+    .q-card-title { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+
+    /* Form fields */
+    .q-row { display: grid; gap: 14px; margin-bottom: 14px; }
+    .q-row-2 { grid-template-columns: 1fr 1fr; }
+    .q-row-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .q-row-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    @media (max-width: 620px) { .q-row-2, .q-row-3, .q-row-4 { grid-template-columns: 1fr; } }
+    .q-field { display: flex; flex-direction: column; gap: 6px; }
+    .q-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+    .q-input, .q-select, .q-textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 11px 14px; color: var(--text); font-size: 15px; font-family: 'Inter', sans-serif; width: 100%; transition: border-color 0.2s ease, background 0.2s ease; }
+    .q-input:focus, .q-select:focus, .q-textarea:focus { outline: none; border-color: var(--blue); background: rgba(69,167,232,0.06); }
+    .q-input::placeholder, .q-textarea::placeholder { color: rgba(143,168,192,0.45); }
+    .q-select option { background: var(--dark-card); color: var(--text); }
+    .q-textarea { resize: vertical; min-height: 100px; }
+
+    /* Panels */
+    .q-panel { display: none; }
+    .q-panel.active { display: block; }
+
+    /* Check / Radio items */
+    .q-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .q-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    @media (max-width: 560px) { .q-grid, .q-grid-3 { grid-template-columns: 1fr; } }
+    .q-check, .q-radio { display: flex; align-items: center; gap: 10px; padding: 10px 13px; border-radius: 8px; cursor: pointer; border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02); transition: border-color 0.18s ease, background 0.18s ease; user-select: none; }
+    .q-check:hover, .q-radio:hover { border-color: rgba(69,167,232,0.3); background: rgba(69,167,232,0.05); }
+    .q-check input, .q-radio input { accent-color: var(--blue); width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; }
+    .q-check span, .q-radio span { font-size: 14px; color: var(--text); line-height: 1.3; }
+
+    /* Yes/No inline pairs */
+    .q-yn-list { display: flex; flex-direction: column; gap: 10px; }
+    .q-yn-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: 8px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); }
+    .q-yn-label { font-size: 14px; color: var(--text); flex: 1; }
+    .q-yn-options { display: flex; gap: 16px; flex-shrink: 0; }
+    .q-yn-option { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); cursor: pointer; }
+    .q-yn-option input { accent-color: var(--blue); cursor: pointer; }
+
+    /* Sub-question label */
+    .q-sub { font-size: 13px; font-weight: 600; color: var(--muted); margin: 16px 0 10px; }
+    .q-sub:first-child { margin-top: 0; }
+
+    /* Radio group inline */
+    .q-radio-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    /* Divider */
+    .q-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 20px 0; }
+
+    /* Submit */
+    .q-submit-wrap { margin-top: 28px; text-align: center; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 999px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.25s ease; text-decoration: none; border: none; font-family: 'Inter', sans-serif; }
+    .btn-primary { background: var(--blue); color: var(--white); box-shadow: 0 4px 20px rgba(69,167,232,0.35); }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 6px 28px rgba(69,167,232,0.45); }
+    .q-submit-note { font-size: 13px; color: var(--muted); margin-top: 12px; }
+
+    /* Success */
+    .q-success { display: none; text-align: center; padding: 64px 24px; background: var(--dark-card); border: 1px solid rgba(34,197,94,0.25); border-radius: var(--radius); }
+    .q-success-icon { width: 64px; height: 64px; background: rgba(34,197,94,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+    .q-success h3 { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .q-success p { color: var(--muted); max-width: 440px; margin: 0 auto; line-height: 1.7; }
+
+    /* ─── Footer ─── */
+    footer { background: var(--dark-card); border-top: 1px solid rgba(255,255,255,0.07); padding: 56px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+    .footer-logo { height: 44px; margin-bottom: 16px; }
+    .footer-tagline { font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 280px; margin-bottom: 20px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; color: var(--muted); transition: var(--transition); text-decoration: none; }
+    .footer-social a:hover { background: var(--blue); color: var(--white); }
+    footer h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); margin-bottom: 16px; }
+    footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    footer ul li a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color var(--transition); }
+    footer ul li a:hover { color: var(--blue); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom p { font-size: 13px; color: var(--muted); }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-bottom { flex-direction: column; text-align: center; } }
+
+    /* ─── Phone FAB ─── */
+    .phone-fab { position: fixed; bottom: 24px; right: 24px; display: flex; align-items: center; gap: 10px; background: var(--blue); color: var(--white); padding: 13px 20px; border-radius: 999px; font-weight: 600; font-size: 15px; text-decoration: none; box-shadow: 0 4px 20px rgba(69,167,232,0.4); transition: transform 0.2s ease, box-shadow 0.2s ease; z-index: 800; opacity: 0; pointer-events: none; transform: translateY(8px); }
+    .phone-fab.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .phone-fab:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(69,167,232,0.5); }
+    @keyframes phone-ring { 0%,100%{transform:rotate(0)} 10%{transform:rotate(-12deg)} 20%{transform:rotate(12deg)} 30%{transform:rotate(-10deg)} 40%{transform:rotate(8deg)} 50%{transform:rotate(0)} }
+    .phone-fab.visible .fab-phone-icon { animation: phone-ring 6s ease 1.5s infinite; display: inline-block; }
+  </style>
+  <script>window.va = window.va || function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Auto Tech Services Home">
+        <img
+          src="https://img1.wsimg.com/isteam/ip/d6d77ac7-cfc3-4df6-aa07-492a58c0a00e/Auto%20Tech%20Logo%201.png/:/rs=h:75,cg:true,m/qt=q:100/ll"
+          alt="Auto Tech Services"
+        />
+      </a>
+      <div class="nav-links">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#about">About</a>
+        <a href="gallery.html">Our Work</a>
+        <a href="dvi.html">DVI</a>
+        <div class="nav-dropdown">
+          <a href="index.html#contact" class="nav-dropdown-trigger">
+            Contact
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="index.html#contact">Contact Us</a>
+            <a href="questionnaire.html" class="active">Send a Questionnaire</a>
+          </div>
+        </div>
+      </div>
+      <button class="btn-book-nav" onclick="onShowBooking('d811f176-fc1e-4265-bf18-2e6584ebf630')">Book Online</button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+      <a href="gallery.html">Our Work</a>
+      <a href="dvi.html">DVI</a>
+      <a href="index.html#contact">Contact Us</a>
+      <a href="questionnaire.html" style="color:var(--blue);">Send a Questionnaire</a>
+      <button onclick="onShowBooking('d811f176-fc1e-4265-bf18-2e6584ebf630')" class="btn btn-primary" style="border:none; cursor:pointer; justify-content:center;">Book Online</button>
+      <a href="tel:5733787300" class="btn btn-primary" style="justify-content:center;">Call or Text 573-378-7300</a>
+    </div>
+  </nav>
+
+  <!-- ═══ PAGE HEADER ═══ -->
+  <div class="page-header">
+    <div class="container">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px;">
+        <span style="font-size:13px;color:var(--muted);"><a href="index.html" style="color:var(--muted);text-decoration:none;">Home</a> / Vehicle Questionnaire</span>
+      </nav>
+      <span class="section-label">Help Us Help You</span>
+      <h1 class="page-title">Vehicle Questionnaire</h1>
+      <p class="page-sub">The more you can tell us about what's going on, the faster and more accurately we can diagnose it. Fill this out before your appointment and we'll review it before you arrive.</p>
+    </div>
+  </div>
+
+  <!-- ═══ QUESTIONNAIRE ═══ -->
+  <section class="q-wrap">
+    <div class="container">
+
+      <!-- Success -->
+      <div class="q-success" id="q-success">
+        <div class="q-success-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Questionnaire Received</h3>
+        <p>We'll review your information before your appointment. Questions in the meantime? Call or text us at <a href="tel:5733787300" style="color:var(--blue);">573-378-7300</a>.</p>
+      </div>
+
+      <div id="q-form-wrap">
+
+        <!-- ── Vehicle & Contact Info ── -->
+        <div class="q-card">
+          <div class="q-card-title">Your Information &amp; Vehicle</div>
+          <div class="q-row q-row-2" style="margin-bottom:14px;">
+            <div class="q-field">
+              <label class="q-label" for="q-name">Full Name *</label>
+              <input class="q-input" type="text" id="q-name" placeholder="Jane Smith" />
+            </div>
+            <div class="q-field">
+              <label class="q-label" for="q-phone">Phone / Text *</label>
+              <input class="q-input" type="tel" id="q-phone" placeholder="573-555-0100" />
+            </div>
+          </div>
+          <div class="q-row q-row-2" style="margin-bottom:14px;">
+            <div class="q-field">
+              <label class="q-label" for="q-email">Email</label>
+              <input class="q-input" type="email" id="q-email" placeholder="jane@example.com" />
+            </div>
+            <div class="q-field">
+              <label class="q-label" for="q-contact-pref">Best Way to Reach You</label>
+              <select class="q-select" id="q-contact-pref">
+                <option value="">Select...</option>
+                <option>Phone call</option>
+                <option>Text message</option>
+                <option>Email</option>
+              </select>
+            </div>
+          </div>
+          <div class="q-row q-row-3" style="margin-bottom:14px;">
+            <div class="q-field">
+              <label class="q-label" for="q-year">Year</label>
+              <input class="q-input" type="text" id="q-year" placeholder="2019" maxlength="4" />
+            </div>
+            <div class="q-field">
+              <label class="q-label" for="q-make">Make</label>
+              <input class="q-input" type="text" id="q-make" placeholder="Chevrolet" />
+            </div>
+            <div class="q-field">
+              <label class="q-label" for="q-model">Model</label>
+              <input class="q-input" type="text" id="q-model" placeholder="Silverado" />
+            </div>
+          </div>
+          <div class="q-row q-row-2">
+            <div class="q-field">
+              <label class="q-label" for="q-mileage">Mileage</label>
+              <input class="q-input" type="text" id="q-mileage" placeholder="94,200" />
+            </div>
+            <div class="q-field">
+              <label class="q-label" for="q-appt">Appointment Date (if scheduled)</label>
+              <input class="q-input" type="text" id="q-appt" placeholder="e.g. May 20" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Dashboard Warning Lights ── -->
+        <div class="q-card">
+          <div class="q-card-title">Any Warning Lights Currently On? (check all that apply)</div>
+          <div class="q-grid q-grid-3">
+            <label class="q-check"><input type="checkbox" name="lights" value="Check Engine / SES" /><span>Check Engine / SES</span></label>
+            <label class="q-check"><input type="checkbox" name="lights" value="ABS" /><span>ABS</span></label>
+            <label class="q-check"><input type="checkbox" name="lights" value="Traction Control / Trac Off" /><span>Traction Control / Trac Off</span></label>
+            <label class="q-check"><input type="checkbox" name="lights" value="Brake" /><span>Brake</span></label>
+            <label class="q-check"><input type="checkbox" name="lights" value="Battery" /><span>Battery</span></label>
+            <label class="q-check"><input type="checkbox" name="lights" value="Oil Pressure" /><span>Oil Pressure</span></label>
+            <label class="q-check"><input type="checkbox" name="lights" value="Airbag / SRS" /><span>Airbag / SRS</span></label>
+            <label class="q-check"><input type="checkbox" name="lights" value="Check Gauges" /><span>Check Gauges</span></label>
+            <label class="q-check"><input type="checkbox" name="lights" value="Tire Pressure / TPMS" /><span>Tire Pressure / TPMS</span></label>
+            <label class="q-check"><input type="checkbox" name="lights" value="Temperature Warning" /><span>Temperature Warning</span></label>
+            <label class="q-check"><input type="checkbox" name="lights" value="None on" /><span>None on</span></label>
+            <label class="q-check"><input type="checkbox" name="lights" value="Other warning light" /><span>Other (describe below)</span></label>
+          </div>
+        </div>
+
+        <!-- ── Tabs ── -->
+        <div class="q-tabs" role="tablist">
+          <button class="q-tab active" data-tab="noise" role="tab">Noise &amp; Vibration</button>
+          <button class="q-tab" data-tab="cooling" role="tab">Engine Cooling</button>
+          <button class="q-tab" data-tab="hvac" role="tab">Heater &amp; AC</button>
+          <button class="q-tab" data-tab="electrical" role="tab">Electrical</button>
+        </div>
+
+        <form action="https://formspree.io/f/xeevndqw" method="POST" id="q-form">
+          <input type="hidden" name="_subject" id="q-subject" value="Vehicle Questionnaire — Noise &amp; Vibration" />
+          <input type="hidden" name="_next" value="https://autotechmo.com/questionnaire.html?success=true" />
+          <input type="hidden" name="Questionnaire Type" id="q-type-field" value="Noise &amp; Vibration" />
+          <!-- Contact fields submitted via JS on submit -->
+          <input type="hidden" name="Name" id="hid-name" />
+          <input type="hidden" name="Phone" id="hid-phone" />
+          <input type="hidden" name="Email" id="hid-email" />
+          <input type="hidden" name="Preferred Contact" id="hid-contact" />
+          <input type="hidden" name="Vehicle Year" id="hid-year" />
+          <input type="hidden" name="Vehicle Make" id="hid-make" />
+          <input type="hidden" name="Vehicle Model" id="hid-model" />
+          <input type="hidden" name="Mileage" id="hid-mileage" />
+          <input type="hidden" name="Appointment Date" id="hid-appt" />
+
+          <!-- ══ NOISE & VIBRATION ══ -->
+          <div class="q-panel active" id="panel-noise">
+
+            <div class="q-card">
+              <div class="q-card-title">What Are You Experiencing?</div>
+              <div class="q-grid">
+                <label class="q-check"><input type="checkbox" name="nv_type" value="Noise" /><span>Noise</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_type" value="Vibration" /><span>Vibration</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_type" value="Both noise and vibration" /><span>Both</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">If There's a Noise — What Does It Sound Like? (check all that apply)</div>
+              <div class="q-grid q-grid-3">
+                <label class="q-check"><input type="checkbox" name="noise_type" value="Knock" /><span>Knock</span></label>
+                <label class="q-check"><input type="checkbox" name="noise_type" value="Clunk" /><span>Clunk</span></label>
+                <label class="q-check"><input type="checkbox" name="noise_type" value="Click / Tick" /><span>Click / Tick</span></label>
+                <label class="q-check"><input type="checkbox" name="noise_type" value="Rattle" /><span>Rattle</span></label>
+                <label class="q-check"><input type="checkbox" name="noise_type" value="Squeak" /><span>Squeak</span></label>
+                <label class="q-check"><input type="checkbox" name="noise_type" value="Squeal" /><span>Squeal</span></label>
+                <label class="q-check"><input type="checkbox" name="noise_type" value="Grinding" /><span>Grinding / Scraping</span></label>
+                <label class="q-check"><input type="checkbox" name="noise_type" value="Hum / Drone" /><span>Hum / Drone</span></label>
+                <label class="q-check"><input type="checkbox" name="noise_type" value="Buzz" /><span>Buzz</span></label>
+                <label class="q-check"><input type="checkbox" name="noise_type" value="Growl" /><span>Growl</span></label>
+                <label class="q-check"><input type="checkbox" name="noise_type" value="Thump" /><span>Thump / Bang</span></label>
+                <label class="q-check"><input type="checkbox" name="noise_type" value="Hiss" /><span>Hiss</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">If There's a Vibration — Where Do You Feel It?</div>
+              <div class="q-grid">
+                <label class="q-check"><input type="checkbox" name="vib_feel" value="Steering wheel" /><span>Steering wheel</span></label>
+                <label class="q-check"><input type="checkbox" name="vib_feel" value="Seat" /><span>Seat</span></label>
+                <label class="q-check"><input type="checkbox" name="vib_feel" value="Floor / floorboard" /><span>Floor / floorboard</span></label>
+                <label class="q-check"><input type="checkbox" name="vib_feel" value="Brake pedal" /><span>Brake pedal</span></label>
+                <label class="q-check"><input type="checkbox" name="vib_feel" value="Entire vehicle" /><span>Entire vehicle</span></label>
+                <label class="q-check"><input type="checkbox" name="vib_feel" value="Engine area" /><span>Engine area</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Where Is It Coming From?</div>
+              <div class="q-grid q-grid-3">
+                <label class="q-check"><input type="checkbox" name="nv_location" value="Front — driver side" /><span>Front — driver side</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_location" value="Front — passenger side" /><span>Front — passenger side</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_location" value="Rear — driver side" /><span>Rear — driver side</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_location" value="Rear — passenger side" /><span>Rear — passenger side</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_location" value="Under the hood" /><span>Under the hood</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_location" value="Underneath the vehicle" /><span>Underneath the vehicle</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_location" value="Inside the cabin" /><span>Inside the cabin</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_location" value="Wheel / tire area" /><span>Wheel / tire area</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">When Does It Happen?</div>
+              <div class="q-grid q-grid-3">
+                <label class="q-check"><input type="checkbox" name="nv_when" value="At idle" /><span>At idle</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_when" value="Accelerating" /><span>Accelerating</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_when" value="Decelerating / letting off gas" /><span>Letting off gas</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_when" value="Cruising at steady speed" /><span>Cruising</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_when" value="Braking" /><span>Braking</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_when" value="Turning" /><span>Turning</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_when" value="Over bumps" /><span>Over bumps</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_when" value="Going uphill" /><span>Going uphill</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_when" value="Highway speeds" /><span>Highway speeds</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_when" value="All the time" /><span>All the time</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_when" value="Intermittent" /><span>Intermittent</span></label>
+              </div>
+              <hr class="q-divider" />
+              <p class="q-sub">Does it change when turning?</p>
+              <div class="q-radio-row">
+                <label class="q-radio"><input type="radio" name="nv_turn" value="Worse turning left" /><span>Worse turning left</span></label>
+                <label class="q-radio"><input type="radio" name="nv_turn" value="Worse turning right" /><span>Worse turning right</span></label>
+                <label class="q-radio"><input type="radio" name="nv_turn" value="No change when turning" /><span>No change</span></label>
+              </div>
+              <p class="q-sub">Does it change when braking?</p>
+              <div class="q-radio-row">
+                <label class="q-radio"><input type="radio" name="nv_brake" value="Gets worse when braking" /><span>Gets worse</span></label>
+                <label class="q-radio"><input type="radio" name="nv_brake" value="Gets better when braking" /><span>Gets better</span></label>
+                <label class="q-radio"><input type="radio" name="nv_brake" value="No change when braking" /><span>No change</span></label>
+              </div>
+              <p class="q-sub">Approximate speed it occurs (if speed-related)</p>
+              <div class="q-row q-row-2">
+                <div class="q-field">
+                  <label class="q-label" for="nv-mph-start">Starts at approximately ___ mph</label>
+                  <input class="q-input" type="number" id="nv-mph-start" name="NV — Starts at mph" placeholder="45" min="0" max="120" />
+                </div>
+                <div class="q-field">
+                  <label class="q-label" for="nv-mph-end">Smooths out above ___ mph (if applicable)</label>
+                  <input class="q-input" type="number" id="nv-mph-end" name="NV — Smooths out above mph" placeholder="70" min="0" max="120" />
+                </div>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">How Often &amp; Under What Conditions</div>
+              <p class="q-sub">How often does it occur?</p>
+              <div class="q-radio-row" style="margin-bottom:16px;">
+                <label class="q-radio"><input type="radio" name="nv_freq" value="All the time" /><span>All the time</span></label>
+                <label class="q-radio"><input type="radio" name="nv_freq" value="Once a day" /><span>Once a day</span></label>
+                <label class="q-radio"><input type="radio" name="nv_freq" value="A few times a week" /><span>A few times a week</span></label>
+                <label class="q-radio"><input type="radio" name="nv_freq" value="Occasionally" /><span>Occasionally</span></label>
+                <label class="q-radio"><input type="radio" name="nv_freq" value="Just started" /><span>Just started</span></label>
+              </div>
+              <p class="q-sub">Outside temperature when it occurs</p>
+              <div class="q-grid">
+                <label class="q-check"><input type="checkbox" name="nv_temp" value="Cold / below freezing" /><span>Cold / below freezing</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_temp" value="Cool (32–50°F)" /><span>Cool (32–50°F)</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_temp" value="Warm (50–75°F)" /><span>Warm (50–75°F)</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_temp" value="Hot (75°F+)" /><span>Hot (75°F+)</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_temp" value="Humid or rainy" /><span>Humid or rainy</span></label>
+                <label class="q-check"><input type="checkbox" name="nv_temp" value="Any temperature" /><span>Any temperature</span></label>
+              </div>
+              <hr class="q-divider" />
+              <div class="q-row" style="margin-bottom:14px;">
+                <div class="q-field">
+                  <label class="q-label" for="nv-start">When did you first notice it?</label>
+                  <input class="q-input" type="text" id="nv-start" name="NV — When it started" placeholder="e.g. About 2 weeks ago after hitting a pothole" />
+                </div>
+              </div>
+              <div class="q-field">
+                <label class="q-label" for="nv-desc">Describe it in your own words — the more detail, the better</label>
+                <textarea class="q-textarea" id="nv-desc" name="NV — Description" placeholder="Any patterns, sounds, smells, or anything else that seems related..."></textarea>
+              </div>
+            </div>
+
+          </div><!-- /noise & vibration -->
+
+          <!-- ══ ENGINE COOLING & OVERHEATING ══ -->
+          <div class="q-panel" id="panel-cooling">
+
+            <div class="q-card">
+              <div class="q-card-title">What's the Problem? (check all that apply)</div>
+              <div class="q-grid">
+                <label class="q-check"><input type="checkbox" name="cool_problem" value="Overheating" /><span>Overheating</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_problem" value="Runs hot but not overheating" /><span>Runs hot but not overheating</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_problem" value="Coolant leaking" /><span>Coolant leaking</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_problem" value="Steam or smoke from engine" /><span>Steam / smoke from engine</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_problem" value="Coolant light on" /><span>Coolant light on</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_problem" value="Temperature gauge abnormal" /><span>Temperature gauge abnormal</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Coolant Light &amp; Temperature Gauge</div>
+              <p class="q-sub">Coolant warning light behavior</p>
+              <div class="q-radio-row" style="margin-bottom:16px;">
+                <label class="q-radio"><input type="radio" name="cool_light" value="On steady" /><span>On steady</span></label>
+                <label class="q-radio"><input type="radio" name="cool_light" value="Comes on and off" /><span>Comes on and off</span></label>
+                <label class="q-radio"><input type="radio" name="cool_light" value="Was on before, off now" /><span>Was on before, off now</span></label>
+                <label class="q-radio"><input type="radio" name="cool_light" value="Has not come on" /><span>Has not come on</span></label>
+              </div>
+              <p class="q-sub">Temperature gauge reading</p>
+              <div class="q-radio-row" style="margin-bottom:16px;">
+                <label class="q-radio"><input type="radio" name="cool_gauge" value="Higher than normal" /><span>Higher than normal</span></label>
+                <label class="q-radio"><input type="radio" name="cool_gauge" value="Normal" /><span>Normal</span></label>
+                <label class="q-radio"><input type="radio" name="cool_gauge" value="Lower than normal (runs cold)" /><span>Lower than normal</span></label>
+              </div>
+              <div class="q-field">
+                <label class="q-label" for="cool-light-duration">How long has the light been on or the gauge been abnormal?</label>
+                <input class="q-input" type="text" id="cool-light-duration" name="Cooling — How long" placeholder="e.g. Started yesterday, about 3 days" />
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">When Does It Happen?</div>
+              <div class="q-grid q-grid-3">
+                <label class="q-check"><input type="checkbox" name="cool_when" value="At idle / sitting still" /><span>At idle / sitting still</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_when" value="City / slow traffic" /><span>City / slow traffic</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_when" value="Highway speeds" /><span>Highway speeds</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_when" value="Going uphill" /><span>Going uphill</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_when" value="While towing or hauling" /><span>While towing or hauling</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_when" value="All the time" /><span>All the time</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_when" value="Intermittent" /><span>Intermittent</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Conditions &amp; History</div>
+              <div class="q-yn-list">
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Is the problem getting worse?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="cool_worse" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="cool_worse" value="No" /> No</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Is the coolant level low?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="cool_level" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="cool_level" value="No" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="cool_level" value="Haven't checked" /> Haven't checked</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Was the AC running when it happened?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="cool_ac" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="cool_ac" value="No" /> No</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Were you towing a trailer?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="cool_towing" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="cool_towing" value="No" /> No</label>
+                  </div>
+                </div>
+              </div>
+              <hr class="q-divider" />
+              <p class="q-sub">Outside temperature when the problem occurs</p>
+              <div class="q-grid">
+                <label class="q-check"><input type="checkbox" name="cool_temp" value="Below freezing" /><span>Below freezing</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_temp" value="Cool (32–50°F)" /><span>Cool (32–50°F)</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_temp" value="Warm (50–75°F)" /><span>Warm (50–75°F)</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_temp" value="Hot (75°F+)" /><span>Hot (75°F+)</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_temp" value="Humid or rainy" /><span>Humid or rainy</span></label>
+                <label class="q-check"><input type="checkbox" name="cool_temp" value="Any temperature" /><span>Any temperature</span></label>
+              </div>
+              <hr class="q-divider" />
+              <div class="q-field">
+                <label class="q-label" for="cool-desc">Any recent work done? Anything else we should know?</label>
+                <textarea class="q-textarea" id="cool-desc" name="Cooling — Additional Info" placeholder="Recent repairs, coolant flushes, hose replacements, anything unusual you've noticed..."></textarea>
+              </div>
+            </div>
+
+          </div><!-- /cooling -->
+
+          <!-- ══ HEATER & AC ══ -->
+          <div class="q-panel" id="panel-hvac">
+
+            <div class="q-card">
+              <div class="q-card-title">What's the Problem? (check all that apply)</div>
+              <div class="q-grid">
+                <label class="q-check"><input type="checkbox" name="hvac_problem" value="AC not cooling" /><span>AC not cooling</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_problem" value="Heater not heating" /><span>Heater not heating</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_problem" value="Airflow issue — can't direct to vents" /><span>Can't direct airflow to vents</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_problem" value="Airflow is weak" /><span>Airflow is weak</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_problem" value="Steams or fogs the windshield" /><span>Steams / fogs windshield</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_problem" value="Unusual noise from system" /><span>Unusual noise from system</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_problem" value="Unusual smell from vents" /><span>Unusual smell from vents</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_problem" value="Temperature fluctuates unexpectedly" /><span>Temperature fluctuates unexpectedly</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Air Conditioner</div>
+              <div class="q-yn-list">
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Is there any cooling at all?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="ac_any_cool" value="Yes, some cooling" /> Yes, some</label>
+                    <label class="q-yn-option"><input type="radio" name="ac_any_cool" value="No cooling at all" /> No, none</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Did it stop suddenly or gradually?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="ac_onset" value="Stopped suddenly" /> Suddenly</label>
+                    <label class="q-yn-option"><input type="radio" name="ac_onset" value="Got worse gradually" /> Gradually</label>
+                  </div>
+                </div>
+              </div>
+              <div class="q-field" style="margin-top:14px;">
+                <label class="q-label" for="ac-last">How long since AC worked properly?</label>
+                <input class="q-input" type="text" id="ac-last" name="AC — Last worked" placeholder="e.g. Stopped working last summer" />
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Heater</div>
+              <div class="q-yn-list">
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Is there any heat at all?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="heat_any" value="Yes, some heat" /> Yes, some</label>
+                    <label class="q-yn-option"><input type="radio" name="heat_any" value="No heat at all" /> No, none</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Does the heater blow cool at stops?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="heat_stops" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="heat_stops" value="No" /> No</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Airflow &amp; Vents</div>
+              <p class="q-sub">Which outlets aren't working correctly?</p>
+              <div class="q-grid q-grid-3">
+                <label class="q-check"><input type="checkbox" name="hvac_outlets" value="Center dash vents" /><span>Center dash vents</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_outlets" value="Side vents" /><span>Side vents</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_outlets" value="Floor vents" /><span>Floor vents</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_outlets" value="Defrost" /><span>Defrost</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_outlets" value="Rear vents" /><span>Rear vents</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_outlets" value="All outlets" /><span>All outlets</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Noises &amp; Smells</div>
+              <p class="q-sub">Any unusual noises from the HVAC system?</p>
+              <div class="q-grid">
+                <label class="q-check"><input type="checkbox" name="hvac_noise" value="Noise when compressor kicks on" /><span>When compressor kicks on</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_noise" value="Noise increases with engine speed" /><span>Increases with engine speed</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_noise" value="Noise changes when vent mode changes" /><span>Changes when vent mode changes</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_noise" value="Squealing or rattling from vents" /><span>Squealing / rattling from vents</span></label>
+              </div>
+              <p class="q-sub">Any unusual smells?</p>
+              <div class="q-grid q-grid-3">
+                <label class="q-check"><input type="checkbox" name="hvac_smell" value="Musty / mildew smell" /><span>Musty / mildew</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_smell" value="Sweet smell (coolant)" /><span>Sweet (coolant)</span></label>
+                <label class="q-check"><input type="checkbox" name="hvac_smell" value="Burning smell" /><span>Burning</span></label>
+              </div>
+              <hr class="q-divider" />
+              <div class="q-field">
+                <label class="q-label" for="hvac-desc">Any recent work done? Anything else we should know?</label>
+                <textarea class="q-textarea" id="hvac-desc" name="HVAC — Additional Info" placeholder="Recent refrigerant recharge, repairs, anything else..."></textarea>
+              </div>
+            </div>
+
+          </div><!-- /hvac -->
+
+          <!-- ══ ELECTRICAL ══ -->
+          <div class="q-panel" id="panel-electrical">
+
+            <div class="q-card">
+              <div class="q-card-title">Which Systems Are Affected? (check all that apply)</div>
+              <div class="q-grid q-grid-3">
+                <label class="q-check"><input type="checkbox" name="elec_system" value="Battery / charging / not starting" /><span>Battery / not starting</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_system" value="Power windows" /><span>Power windows</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_system" value="Door locks" /><span>Door locks</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_system" value="Exterior lights" /><span>Exterior lights</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_system" value="Interior lights" /><span>Interior lights</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_system" value="Instrument cluster / gauges" /><span>Instrument cluster</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_system" value="Radio / infotainment" /><span>Radio / infotainment</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_system" value="Horn" /><span>Horn</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_system" value="Windshield wipers" /><span>Windshield wipers</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_system" value="Remote start" /><span>Remote start</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_system" value="Trailer lights" /><span>Trailer lights</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_system" value="Other electrical" /><span>Other (describe below)</span></label>
+              </div>
+              <div class="q-field" style="margin-top:14px;">
+                <label class="q-label" for="elec-components">Describe specifically what is or isn't working</label>
+                <textarea class="q-textarea" id="elec-components" name="Electrical — Components" style="min-height:80px;" placeholder="e.g. Driver's side window won't go up, radio loses power randomly..."></textarea>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Is the Problem Consistent or Intermittent?</div>
+              <div class="q-radio-row" style="margin-bottom:16px;">
+                <label class="q-radio"><input type="radio" name="elec_consistency" value="Happens all the time" /><span>All the time</span></label>
+                <label class="q-radio"><input type="radio" name="elec_consistency" value="Intermittent — comes and goes" /><span>Comes and goes</span></label>
+                <label class="q-radio"><input type="radio" name="elec_consistency" value="Only on cold start" /><span>Only on cold start</span></label>
+                <label class="q-radio"><input type="radio" name="elec_consistency" value="Only after the vehicle warms up" /><span>Only after warming up</span></label>
+                <label class="q-radio"><input type="radio" name="elec_consistency" value="Only after sitting in the rain or wet" /><span>After rain / wet conditions</span></label>
+              </div>
+              <p class="q-sub">Outside temperature when the problem occurs</p>
+              <div class="q-grid">
+                <label class="q-check"><input type="checkbox" name="elec_temp" value="Cold / freezing" /><span>Cold / freezing</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_temp" value="Cool (32–50°F)" /><span>Cool (32–50°F)</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_temp" value="Warm (50–75°F)" /><span>Warm (50–75°F)</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_temp" value="Hot (75°F+)" /><span>Hot (75°F+)</span></label>
+                <label class="q-check"><input type="checkbox" name="elec_temp" value="Any temperature" /><span>Any temperature</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Vehicle History</div>
+              <div class="q-yn-list">
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Has the vehicle been in an accident recently?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="elec_accident" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="elec_accident" value="No" /> No</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Has the battery been replaced recently?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="elec_battery" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="elec_battery" value="No" /> No</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Have any fuses been replaced recently?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="elec_fuses" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="elec_fuses" value="No" /> No</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Any aftermarket accessories installed? (remote start, alarm, audio, interlock, navigation)</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="elec_aftermarket" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="elec_aftermarket" value="No" /> No</label>
+                  </div>
+                </div>
+              </div>
+              <div class="q-field" style="margin-top:14px;">
+                <label class="q-label" for="elec-aftermarket-list">If yes, please list the aftermarket accessories</label>
+                <input class="q-input" type="text" id="elec-aftermarket-list" name="Electrical — Aftermarket accessories" placeholder="e.g. Remote start, aftermarket stereo" />
+              </div>
+              <hr class="q-divider" />
+              <div class="q-field">
+                <label class="q-label" for="elec-desc">Any recent work done? Anything else we should know?</label>
+                <textarea class="q-textarea" id="elec-desc" name="Electrical — Additional Info" placeholder="Recent repairs, when you first noticed it, anything unusual..."></textarea>
+              </div>
+            </div>
+
+          </div><!-- /electrical -->
+
+          <div class="q-submit-wrap">
+            <button type="submit" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send to Auto Tech
+            </button>
+            <p class="q-submit-note">We'll review this before your appointment and follow up if we have questions.</p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div>
+          <img src="https://img1.wsimg.com/isteam/ip/d6d77ac7-cfc3-4df6-aa07-492a58c0a00e/Auto%20Tech%20Pic%20Edited%20by%20Chat.png" alt="Auto Tech Services" class="footer-logo" />
+          <p class="footer-tagline">Family-owned and operated in Versailles, MO. Honest service, quality repairs, and a team you can trust.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/1001017426436018" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M22 12.061C22 6.505 17.523 2 12 2S2 6.505 2 12.061c0 5.022 3.657 9.184 8.438 9.939v-7.03h-2.54v-2.91h2.54V9.845c0-2.522 1.492-3.915 3.777-3.915 1.094 0 2.238.197 2.238.197v2.476h-1.26c-1.243 0-1.63.775-1.63 1.57v1.888h2.773l-.443 2.908h-2.33V22c4.78-.755 8.437-4.917 8.437-9.939z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="gallery.html">Our Work</a></li>
+            <li><a href="dvi.html">Digital Inspection (DVI)</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="questionnaire.html">Vehicle Questionnaire</a></li>
+          </ul>
+          <div style="margin-top:20px;">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:5733787300">573-378-7300</a></li>
+            <li><a href="https://maps.google.com/?q=Auto+Tech+Services+13431+State+Route+52+Versailles+MO+65084" target="_blank" rel="noopener">13431 State Route 52<br />Versailles, MO 65084</a></li>
+            <li style="color:var(--muted);font-size:14px;">Mon–Fri: 8:00 AM – 5:00 PM</li>
+            <li style="color:var(--muted);font-size:14px;">Sat–Sun: Closed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright &copy; 2026 Auto Tech Services — All Rights Reserved.</p>
+        <p>Versailles, MO 65084</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var s = document.createElement('script');
+      s.src = 'https://booking.tekmetric.com/iframe/modal.js?time=' + Date.now();
+      s.defer = true;
+      document.body.appendChild(s);
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = 'https://booking.tekmetric.com/iframe/modal.css?time=' + Date.now();
+      document.head.appendChild(l);
+    })();
+  </script>
+
+  <a href="tel:5733787300" class="phone-fab" id="phone-fab" aria-label="Call Auto Tech Services">
+    <svg class="fab-phone-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+    <span>573-378-7300</span>
+  </a>
+
+  <script>
+    // Tab switching
+    document.querySelectorAll('.q-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        document.querySelectorAll('.q-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.q-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + target).classList.add('active');
+        const label = tab.textContent.trim();
+        document.getElementById('q-type-field').value = label;
+        document.getElementById('q-subject').value = 'Vehicle Questionnaire — ' + label;
+      });
+    });
+
+    // Copy contact fields into hidden inputs before submit
+    document.getElementById('q-form').addEventListener('submit', () => {
+      document.getElementById('hid-name').value    = document.getElementById('q-name').value;
+      document.getElementById('hid-phone').value   = document.getElementById('q-phone').value;
+      document.getElementById('hid-email').value   = document.getElementById('q-email').value;
+      document.getElementById('hid-contact').value = document.getElementById('q-contact-pref').value;
+      document.getElementById('hid-year').value    = document.getElementById('q-year').value;
+      document.getElementById('hid-make').value    = document.getElementById('q-make').value;
+      document.getElementById('hid-model').value   = document.getElementById('q-model').value;
+      document.getElementById('hid-mileage').value = document.getElementById('q-mileage').value;
+      document.getElementById('hid-appt').value    = document.getElementById('q-appt').value;
+    });
+
+    // Success state
+    if (window.location.search.includes('success=true')) {
+      document.getElementById('q-form-wrap').style.display = 'none';
+      document.getElementById('q-success').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    // Phone FAB
+    setTimeout(() => document.getElementById('phone-fab').classList.add('visible'), 2000);
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+  </script>
+
+</body>
+</html>

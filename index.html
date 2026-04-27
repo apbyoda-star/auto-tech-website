@@ -142,6 +142,22 @@
       transition: color var(--transition), background var(--transition);
     }
     .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(69,167,232,0.15); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-trigger { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+    .nav-dropdown-trigger svg { transition: transform 0.2s ease; }
+    .nav-dropdown:hover .nav-dropdown-trigger svg { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      display: none; position: absolute; top: 100%; right: 0;
+      background: var(--dark-card); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; min-width: 210px; padding: 14px 6px 6px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-menu a { display: block; padding: 10px 14px; border-radius: 7px; color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color var(--transition), background var(--transition); }
+    .nav-dropdown-menu a:hover { color: var(--white); background: rgba(69,167,232,0.12); }
+    .btn-book-nav { padding: 9px 18px; border-radius: 999px; background: var(--blue); color: var(--white); border: none; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s ease, transform 0.2s ease; margin-left: 6px; }
+    .btn-book-nav:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    @media (max-width: 768px) { .btn-book-nav { display: none; } }
 
     /* Hamburger */
     .hamburger {
@@ -1052,8 +1068,18 @@
         <a href="#about">About</a>
         <a href="gallery.html">Our Work</a>
         <a href="dvi.html">DVI</a>
-        <a href="#contact">Contact</a>
+        <div class="nav-dropdown">
+          <a href="#contact" class="nav-dropdown-trigger">
+            Contact
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="#contact">Contact Us</a>
+            <a href="questionnaire.html">Send a Questionnaire</a>
+          </div>
+        </div>
       </div>
+      <button class="btn-book-nav" onclick="onShowBooking('d811f176-fc1e-4265-bf18-2e6584ebf630')">Book Online</button>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -1063,7 +1089,9 @@
       <a href="#about" class="mobile-link">About</a>
       <a href="gallery.html" class="mobile-link">Our Work</a>
       <a href="dvi.html" class="mobile-link">DVI</a>
-      <a href="#contact" class="mobile-link">Contact</a>
+      <a href="#contact" class="mobile-link">Contact Us</a>
+      <a href="questionnaire.html" class="mobile-link" style="color:var(--blue);">Send a Questionnaire</a>
+      <button onclick="onShowBooking('d811f176-fc1e-4265-bf18-2e6584ebf630')" class="btn btn-primary" style="margin-top:4px; border:none; cursor:pointer; justify-content:center;">Book Online</button>
       <a href="tel:5733787300" class="btn btn-primary">Call or Text 573-378-7300</a>
     </div>
   </nav>
@@ -1568,6 +1596,16 @@
                 Send Message
               </button>
               <p class="form-note">We'll get back to you within one business day.</p>
+              <div style="border-top:1px solid rgba(255,255,255,0.07); margin-top:24px; padding-top:20px; display:flex; flex-direction:column; gap:10px; align-items:stretch;">
+                <button onclick="onShowBooking('d811f176-fc1e-4265-bf18-2e6584ebf630')" class="btn btn-primary" style="border:none; cursor:pointer; justify-content:center;">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  Book an Appointment Online
+                </button>
+                <a href="questionnaire.html" class="btn" style="background:rgba(69,167,232,0.12); color:var(--blue); justify-content:center; text-align:center;">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  Send a Vehicle Questionnaire
+                </a>
+              </div>
             </form>
           </div>
           <div class="form-success" id="form-success">
@@ -1811,6 +1849,19 @@
       document.getElementById('photoLbClose').addEventListener('click', closeLb);
       overlay.addEventListener('click', e => { if (e.target === overlay) closeLb(); });
       document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+    })();
+  </script>
+
+  <script>
+    (function() {
+      var s = document.createElement('script');
+      s.src = 'https://booking.tekmetric.com/iframe/modal.js?time=' + Date.now();
+      s.defer = true;
+      document.body.appendChild(s);
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = 'https://booking.tekmetric.com/iframe/modal.css?time=' + Date.now();
+      document.head.appendChild(l);
     })();
   </script>
 
