@@ -600,25 +600,55 @@
 
     /* ── Statement cards ── */
     .about-statements {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
       margin-bottom: 56px;
     }
-    .statement-card {
+    .culture-strip {
       background: var(--dark-card);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: var(--radius);
-      padding: 32px;
+      padding: 22px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .culture-strip::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue) 0%, rgba(69,167,232,0.15) 100%);
+    }
+    .culture-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .culture-text {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .statement-card {
+      background: rgba(69,167,232,0.07);
+      border: 1px solid rgba(69,167,232,0.2);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+      text-align: center;
       position: relative;
       overflow: hidden;
     }
     .statement-card::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--blue) 0%, rgba(69,167,232,0.15) 100%);
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--blue), transparent);
     }
     .statement-label {
       font-size: 11px;
@@ -640,16 +670,18 @@
       flex-shrink: 0;
     }
     .statement-title {
-      font-family: 'Merriweather', serif;
-      font-size: 18px;
-      font-weight: 900;
-      color: var(--white);
-      margin-bottom: 14px;
-      line-height: 1.3;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
     }
     .statement-body {
-      font-size: 15px;
-      color: var(--text);
+      font-family: 'Merriweather', serif;
+      font-size: 17px;
+      font-style: italic;
+      color: var(--white);
       line-height: 1.8;
     }
 
@@ -1049,7 +1081,7 @@
     ═══════════════════════════════════════════════ */
     @media (max-width: 1023px) {
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .about-statements { grid-template-columns: 1fr; }
+      .about-statements { flex-direction: column; }
       .contact-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -1332,9 +1364,9 @@
           <p class="statement-title">Mission Statement</p>
           <p class="statement-body">"At Auto Tech, we are committed to using the talents and resources that God has given us to provide a service to the community that is ethical and trustworthy — where we will never put money ahead of people."</p>
         </div>
-        <div class="statement-card reveal">
-          <p class="statement-title">Culture Statement</p>
-          <p class="statement-body">[Culture statement coming soon.]</p>
+        <div class="culture-strip reveal">
+          <p class="culture-label">Culture Statement</p>
+          <p class="culture-text">Faith-Driven Excellence — caring for each other, serving our community.</p>
         </div>
       </div>
 
