@@ -256,7 +256,7 @@
             </div>
             <div class="q-field">
               <label class="q-label" for="q-phone">Phone / Text *</label>
-              <input class="q-input" type="tel" id="q-phone" placeholder="573-555-0100" />
+              <input class="q-input" type="tel" id="q-phone" placeholder="(573) 555-0100" maxlength="14" />
             </div>
           </div>
           <div class="q-row q-row-2" style="margin-bottom:14px;">
@@ -295,7 +295,7 @@
             </div>
             <div class="q-field">
               <label class="q-label" for="q-appt">Appointment Date (if scheduled)</label>
-              <input class="q-input" type="text" id="q-appt" placeholder="e.g. May 20" />
+              <input class="q-input" type="text" id="q-appt" placeholder="MM/DD/YYYY" maxlength="10" />
             </div>
           </div>
         </div>
@@ -949,6 +949,31 @@
         btn.innerHTML = origHTML;
         alert('Something went wrong. Please try again or call us at 573-378-7300.');
       }
+    });
+
+    // Phone auto-format: (XXX) XXX-XXXX
+    document.getElementById('q-phone').addEventListener('input', function() {
+      const digits = this.value.replace(/\D/g, '').slice(0, 10);
+      let out = '';
+      if (digits.length >= 1) out = '(' + digits.slice(0, 3);
+      if (digits.length >= 4) out += ') ' + digits.slice(3, 6);
+      if (digits.length >= 7) out += '-' + digits.slice(6, 10);
+      this.value = out;
+    });
+
+    // Date auto-format: MM/DD/YYYY
+    document.getElementById('q-appt').addEventListener('input', function() {
+      const digits = this.value.replace(/\D/g, '').slice(0, 8);
+      let out = digits.slice(0, 2);
+      if (digits.length > 2) out += '/' + digits.slice(2, 4);
+      if (digits.length > 4) out += '/' + digits.slice(4, 8);
+      this.value = out;
+    });
+
+    // Mileage auto-format: comma thousands separator
+    document.getElementById('q-mileage').addEventListener('input', function() {
+      const digits = this.value.replace(/\D/g, '').slice(0, 7);
+      this.value = digits ? parseInt(digits, 10).toLocaleString('en-US') : '';
     });
 
     // Phone FAB
