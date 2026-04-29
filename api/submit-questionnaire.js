@@ -9,8 +9,6 @@ const BGRAY = '#e2e8ef';
 
 // ─── PDF ────────────────────────────────────────────────────────────────────
 
-function px(doc) { return doc.y; }
-
 function sectionDivider(doc, label, x, w) {
 
   doc.fillColor(GRAY).font('Helvetica-Bold').fontSize(7.5)

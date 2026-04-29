@@ -22,13 +22,11 @@
       --blue-dark:  #2882c4;
       --dark:       #0f1923;
       --dark-card:  #182130;
-      --mid:        #2a3a4a;
       --white:      #ffffff;
       --text:       #e2eaf2;
       --muted:      #8fa8c0;
       --green:      #22c55e;
       --radius:     12px;
-      --shadow:     0 4px 24px rgba(0,0,0,0.35);
       --transition: 0.3s ease;
       --nav-h:      72px;
     }
@@ -95,8 +93,7 @@
     .q-row { display: grid; gap: 14px; margin-bottom: 14px; }
     .q-row-2 { grid-template-columns: 1fr 1fr; }
     .q-row-3 { grid-template-columns: 1fr 1fr 1fr; }
-    .q-row-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
-    @media (max-width: 620px) { .q-row-2, .q-row-3, .q-row-4 { grid-template-columns: 1fr; } }
+    @media (max-width: 620px) { .q-row-2, .q-row-3 { grid-template-columns: 1fr; } }
     .q-field { display: flex; flex-direction: column; gap: 6px; }
     .q-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
     .q-input, .q-select, .q-textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 11px 14px; color: var(--text); font-size: 15px; font-family: 'Inter', sans-serif; width: 100%; transition: border-color 0.2s ease, background 0.2s ease; }
@@ -174,6 +171,9 @@
   </style>
   <script>window.va = window.va || function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://autotechmo.com/"},{"@type":"ListItem","position":2,"name":"Vehicle Questionnaire","item":"https://autotechmo.com/questionnaire.html"}]}
+  </script>
 </head>
 <body>
 
@@ -329,19 +329,8 @@
           <button class="q-tab" data-tab="driveability" role="tab">Driveability</button>
         </div>
 
-        <form action="https://formspree.io/f/xeevndqw" method="POST" id="q-form">
-          <input type="hidden" name="_subject" id="q-subject" value="Vehicle Questionnaire — Noise &amp; Vibration" />
+        <form id="q-form">
           <input type="hidden" name="Questionnaire Type" id="q-type-field" value="Noise &amp; Vibration" />
-          <!-- Contact fields submitted via JS on submit -->
-          <input type="hidden" name="Name" id="hid-name" />
-          <input type="hidden" name="Phone" id="hid-phone" />
-          <input type="hidden" name="Email" id="hid-email" />
-          <input type="hidden" name="Preferred Contact" id="hid-contact" />
-          <input type="hidden" name="Vehicle Year" id="hid-year" />
-          <input type="hidden" name="Vehicle Make" id="hid-make" />
-          <input type="hidden" name="Vehicle Model" id="hid-model" />
-          <input type="hidden" name="Mileage" id="hid-mileage" />
-          <input type="hidden" name="Appointment Date" id="hid-appt" />
 
           <!-- ══ NOISE & VIBRATION ══ -->
           <div class="q-panel active" id="panel-noise">
@@ -1227,7 +1216,6 @@
         document.getElementById('panel-' + target).classList.add('active');
         const label = tab.textContent.trim();
         document.getElementById('q-type-field').value = label;
-        document.getElementById('q-subject').value = 'Vehicle Questionnaire — ' + label;
       });
     });
 
