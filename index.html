@@ -552,7 +552,17 @@
     }
     #about .statement-body { color: #1a2535; }
     #about .mission-box { color: #4a6070; }
-    #about .about-facility { border-top-color: rgba(0,0,0,0.09); }
+
+    /* ── Facility section (own blue section) ── */
+    #facility {
+      background: #1c3a56;
+      padding: 72px 0;
+    }
+    #facility .about-facility {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0;
+    }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1068,8 +1078,15 @@
     ═══════════════════════════════════════════════ */
     #gallery-teaser {
       padding: 100px 0;
-      background: var(--dark);
+      background: #f0f5fa;
     }
+    #gallery-teaser .section-heading { color: #1a2535; }
+    #gallery-teaser .section-sub { color: #4a6070; }
+    #gallery-teaser .btn-outline {
+      color: #1a2535;
+      border-color: rgba(26,37,53,0.35);
+    }
+    #gallery-teaser .btn-outline:hover { background: rgba(26,37,53,0.07); }
     .teaser-header { text-align: center; margin-bottom: 48px; }
     .teaser-header .section-sub { margin: 0 auto 32px; }
     .teaser-grid {
@@ -1447,6 +1464,12 @@
           <a href="#contact" class="btn btn-primary">Schedule Service</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══ FACILITY ═══ -->
+  <section id="facility">
+    <div class="container">
       <div class="about-facility reveal">
         <div class="facility-copy">
           <span class="section-label">Our Facility</span>
