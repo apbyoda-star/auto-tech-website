@@ -24,7 +24,7 @@
       --blue-dark:  #2882c4;
       --blue-deep:  #1a5f8b;
       --dark:       #0f1923;
-      --dark-card:  #182130;
+      --dark-card:  #1c293d;
       --mid:        #2a3a4a;
       --light:      #f5f8fc;
       --white:      #ffffff;
@@ -219,6 +219,7 @@
       position: absolute;
       inset: 0;
       background-image:
+        radial-gradient(ellipse 65% 75% at 32% 50%, rgba(69,167,232,0.13) 0%, transparent 62%),
         linear-gradient(to bottom, rgba(10,20,35,0.55) 0%, rgba(10,20,35,0.7) 100%),
         url('https://img1.wsimg.com/isteam/ip/d6d77ac7-cfc3-4df6-aa07-492a58c0a00e/Auto%20Tech%20Pic%20Edited%20by%20Chat.png');
       background-size: cover;
@@ -377,7 +378,7 @@
       display: flex;
       flex-direction: column;
       background: var(--dark-card);
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.11);
       border-radius: var(--radius);
       padding: 22px 24px;
       transition: border-color var(--transition), box-shadow var(--transition);
@@ -529,8 +530,26 @@
     ═══════════════════════════════════════════════ */
     #about {
       padding: 100px 0;
-      background: var(--dark-card);
+      background: #f0f5fa;
     }
+    #about .section-heading { color: #1a2535; }
+    #about .section-sub,
+    #about .about-feature-text,
+    #about .culture-text,
+    #about .facility-copy p { color: #4a6070; }
+    #about .facility-copy strong { color: #1a2535; }
+    #about .culture-label { color: #6a8090; }
+    #about .culture-strip {
+      background: #ffffff;
+      border-color: rgba(0,0,0,0.08);
+    }
+    #about .statement-card {
+      background: rgba(69,167,232,0.08);
+      border-color: rgba(69,167,232,0.3);
+    }
+    #about .statement-body { color: #1a2535; }
+    #about .mission-box { color: #4a6070; }
+    #about .about-facility { border-top-color: rgba(0,0,0,0.09); }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
