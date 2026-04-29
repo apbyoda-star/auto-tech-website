@@ -176,7 +176,7 @@ function generatePDF(data) {
               doc.moveDown(0.15);
             }
             doc.fillColor(NAVY).font('Helvetica-Bold').fontSize(9)
-              .text(`→  ${item.value}`, M + 8, doc.y, { width: CW - 16 });
+              .text(`>>  ${item.value}`, M + 8, doc.y, { width: CW - 16 });
             doc.moveDown(0.5);
 
           } else if (item.kind === 'text') {
@@ -194,15 +194,6 @@ function generatePDF(data) {
         doc.moveDown(0.6);
       });
     }
-
-    // ── PAGE FOOTER (last page only) ──
-    const footY = doc.page.height - 28;
-    doc.rect(0, footY, W, 28).fill(NAVY);
-    doc.fillColor('rgba(255,255,255,0.5)').font('Helvetica').fontSize(7)
-      .text(
-        'Auto Tech Services  •  573-378-7300  •  autotechmo.com  •  13431 State Route 52, Versailles, MO',
-        M, footY + 10, { width: CW }
-      );
 
     doc.end();
   });
