@@ -855,19 +855,74 @@
       });
     });
 
-    // Submit questionnaire via AJAX — stays on page
+    // Collect all visible form data into a structured JSON payload
+    function collectPayload() {
+      const activePanel = document.querySelector('.q-panel.active');
+      const payload = {
+        name:             document.getElementById('q-name').value.trim(),
+        phone:            document.getElementById('q-phone').value.trim(),
+        email:            document.getElementById('q-email').value.trim(),
+        contactPref:      document.getElementById('q-contact-pref').value,
+        year:             document.getElementById('q-year').value.trim(),
+        make:             document.getElementById('q-make').value.trim(),
+        model:            document.getElementById('q-model').value.trim(),
+        mileage:          document.getElementById('q-mileage').value.trim(),
+        appointment:      document.getElementById('q-appt').value.trim(),
+        questionnaireType: document.getElementById('q-type-field').value,
+        lights: [],
+        sections: []
+      };
+
+      // Warning lights
+      document.querySelectorAll('input[name="lights"]:checked').forEach(cb => {
+        payload.lights.push(cb.value);
+      });
+
+      // Active panel sections
+      activePanel.querySelectorAll('.q-card').forEach(card => {
+        const title = card.querySelector('.q-card-title')?.textContent?.trim() || '';
+        const items = [];
+
+        // Checkboxes grouped by name
+        const checkMap = {};
+        card.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+          if (!checkMap[cb.name]) checkMap[cb.name] = [];
+          checkMap[cb.name].push(cb.value);
+        });
+        Object.values(checkMap).forEach(vals => {
+          if (vals.length) items.push({ kind: 'checks', values: vals });
+        });
+
+        // Radio buttons with their question label
+        const radioMap = {};
+        card.querySelectorAll('input[type="radio"]:checked').forEach(rb => {
+          if (radioMap[rb.name]) return;
+          const ynLabel  = rb.closest('.q-yn-row')?.querySelector('.q-yn-label')?.textContent?.trim();
+          let subEl = rb.closest('.q-radio-row')?.previousElementSibling;
+          while (subEl && !subEl.classList.contains('q-sub')) subEl = subEl.previousElementSibling;
+          const label = ynLabel || subEl?.textContent?.trim() || '';
+          const value = rb.closest('label')?.querySelector('span')?.textContent?.trim() || rb.value;
+          radioMap[rb.name] = { label, value };
+        });
+        Object.values(radioMap).forEach(r => items.push({ kind: 'radio', label: r.label, value: r.value }));
+
+        // Text inputs and textareas
+        card.querySelectorAll('input[type="text"], input[type="number"], textarea').forEach(el => {
+          if (!el.value.trim()) return;
+          const labelEl = document.querySelector(`label[for="${el.id}"]`);
+          const label = labelEl?.textContent?.trim() || el.placeholder || el.name || '';
+          items.push({ kind: 'text', label, value: el.value.trim() });
+        });
+
+        if (items.length) payload.sections.push({ title, items });
+      });
+
+      return payload;
+    }
+
+    // Submit questionnaire — sends JSON to Vercel API, stays on page
     document.getElementById('q-form').addEventListener('submit', async function(e) {
       e.preventDefault();
-      // Copy visible fields into hidden inputs so they're included in FormData
-      document.getElementById('hid-name').value    = document.getElementById('q-name').value;
-      document.getElementById('hid-phone').value   = document.getElementById('q-phone').value;
-      document.getElementById('hid-email').value   = document.getElementById('q-email').value;
-      document.getElementById('hid-contact').value = document.getElementById('q-contact-pref').value;
-      document.getElementById('hid-year').value    = document.getElementById('q-year').value;
-      document.getElementById('hid-make').value    = document.getElementById('q-make').value;
-      document.getElementById('hid-model').value   = document.getElementById('q-model').value;
-      document.getElementById('hid-mileage').value = document.getElementById('q-mileage').value;
-      document.getElementById('hid-appt').value    = document.getElementById('q-appt').value;
 
       const btn = this.querySelector('[type="submit"]');
       const origHTML = btn.innerHTML;
@@ -875,10 +930,10 @@
       btn.innerHTML = 'Submitting&hellip;';
 
       try {
-        const res = await fetch(this.action, {
+        const res = await fetch('/api/submit-questionnaire', {
           method: 'POST',
-          body: new FormData(this),
-          headers: { 'Accept': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(collectPayload())
         });
         if (res.ok) {
           document.getElementById('q-form-wrap').style.display = 'none';
