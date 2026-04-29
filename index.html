@@ -937,6 +937,9 @@
     }
     .form-group select option { background: var(--dark-card); }
     .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.7); cursor: pointer; }
+    .form-group input[type="date"]::-webkit-datetime-edit-fields-wrapper { color: var(--white); }
+    .form-optional { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.3); margin-left: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
     .form-submit {
       width: 100%;
       justify-content: center;
@@ -1682,6 +1685,10 @@
                 </select>
               </div>
               <div class="form-group">
+                <label for="appt-date">Preferred Appointment Date <span class="form-optional">Optional</span></label>
+                <input type="date" id="appt-date" name="appt-date" />
+              </div>
+              <div class="form-group">
                 <label for="message">Message</label>
                 <textarea id="message" name="message" placeholder="Tell us about your vehicle and what you need…"></textarea>
               </div>
@@ -1899,8 +1906,9 @@
               lname:   document.getElementById('lname').value.trim(),
               email:   document.getElementById('email').value.trim(),
               phone:   document.getElementById('phone').value.trim(),
-              service: document.getElementById('service').value,
-              message: document.getElementById('message').value.trim(),
+              service:   document.getElementById('service').value,
+              apptDate:  document.getElementById('appt-date').value,
+              message:   document.getElementById('message').value.trim(),
             })
           });
           if (res.ok) {
@@ -1919,6 +1927,10 @@
         }
       });
     }
+
+    // Set date picker min to today
+    const apptDate = document.getElementById('appt-date');
+    if (apptDate) apptDate.min = new Date().toISOString().split('T')[0];
 
     // Phone auto-format: (XXX) XXX-XXXX
     document.getElementById('phone').addEventListener('input', function() {

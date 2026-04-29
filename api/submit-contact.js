@@ -8,11 +8,14 @@ function esc(str) {
     .replace(/"/g, '&quot;');
 }
 
-function buildEmail({ fname, lname, email, phone, service, message }) {
+function buildEmail({ fname, lname, email, phone, service, apptDate, message }) {
   const name = [fname, lname].filter(Boolean).map(esc).join(' ') || 'Customer';
   const safeEmail   = esc(email);
   const safePhone   = esc(phone);
   const safeService = esc(service);
+  const safeDate    = apptDate
+    ? esc(new Date(apptDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }))
+    : '';
   const safeMsg     = esc(message).replace(/\n/g, '<br>');
   const submitted   = new Date().toLocaleString('en-US', {
     month: 'short', day: 'numeric', year: 'numeric',
@@ -78,6 +81,15 @@ function buildEmail({ fname, lname, email, phone, service, message }) {
     </td>
   </tr>` : ''}
 
+  ${safeDate ? `
+  <!-- Preferred Date -->
+  <tr>
+    <td style="background:#ffffff;padding:20px 36px 0;">
+      <div style="font-size:10px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase;color:#45A7E8;margin-bottom:10px;">Preferred Appointment Date</div>
+      <div style="background:#e8f4fd;border-left:4px solid #45A7E8;padding:14px 18px;border-radius:0 8px 8px 0;font-size:16px;font-weight:bold;color:#1a1f2e;">&#128197;&nbsp; ${safeDate}</div>
+    </td>
+  </tr>` : ''}
+
   ${safeMsg ? `
   <!-- Message -->
   <tr>
@@ -125,7 +137,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { fname, lname, email, phone, service, message } = req.body;
+    const { fname, lname, email, phone, service, apptDate, message } = req.body;
     const name = [fname, lname].filter(Boolean).join(' ') || 'Customer';
     const subject = service
       ? `New Inquiry: ${name} — ${service}`
@@ -138,7 +150,7 @@ module.exports = async (req, res) => {
       to:       process.env.SHOP_EMAIL || 'Service@autotechmo.com',
       reply_to: email || undefined,
       subject,
-      html:     buildEmail({ fname, lname, email, phone, service, message }),
+      html:     buildEmail({ fname, lname, email, phone, service, apptDate, message }),
     });
 
     res.status(200).json({ ok: true });
