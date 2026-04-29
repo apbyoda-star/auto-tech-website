@@ -12,8 +12,9 @@ const BGRAY = '#e2e8ef';
 function px(doc) { return doc.y; }
 
 function sectionDivider(doc, label, x, w) {
+  doc.characterSpacing(1);
   doc.fillColor(GRAY).font('Helvetica-Bold').fontSize(7.5)
-    .characterSpacing(1).text(label, x, doc.y, { width: w });
+    .text(label, x, doc.y, { width: w });
   doc.characterSpacing(0);
   const lineY = doc.y + 1;
   doc.moveTo(x, lineY).lineTo(x + w, lineY)
@@ -24,7 +25,8 @@ function sectionDivider(doc, label, x, w) {
 function infoBox(doc, headerLabel, headerColor, fields, x, y, w, h) {
   doc.rect(x, y, w, h).fillAndStroke(LGRAY, BGRAY);
   doc.rect(x, y, w, 20).fill(headerColor);
-  doc.fillColor('white').font('Helvetica-Bold').fontSize(7.5).characterSpacing(0.5)
+  doc.characterSpacing(0.5);
+  doc.fillColor('white').font('Helvetica-Bold').fontSize(7.5)
     .text(headerLabel, x + 8, y + 6, { width: w - 16 });
   doc.characterSpacing(0);
 
@@ -65,7 +67,8 @@ function generatePDF(data) {
 
     doc.fillColor('white').font('Helvetica-Bold').fontSize(21)
       .text('AUTO TECH', M, 16);
-    doc.fillColor(BLUE).font('Helvetica').fontSize(8).characterSpacing(1.5)
+    doc.characterSpacing(1.5);
+    doc.fillColor(BLUE).font('Helvetica').fontSize(8)
       .text('SERVICES', M, 41);
     doc.characterSpacing(0);
 
@@ -80,7 +83,8 @@ function generatePDF(data) {
       })}`, 0, 44, { align: 'right', width: W - M });
 
     // ── TITLE ──
-    doc.fillColor(NAVY).font('Helvetica-Bold').fontSize(14).characterSpacing(0.5)
+    doc.characterSpacing(0.5);
+    doc.fillColor(NAVY).font('Helvetica-Bold').fontSize(14)
       .text('VEHICLE SERVICE QUESTIONNAIRE', M, 86, { align: 'center', width: CW });
     doc.characterSpacing(0);
     doc.fillColor(BLUE).font('Helvetica').fontSize(10)
