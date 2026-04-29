@@ -1140,6 +1140,8 @@
       .form-row { grid-template-columns: 1fr; }
       .contact-form-wrap { padding: 24px; }
       .dvi-teaser-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      #reviews > .container > div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
+      #about .reveal[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; gap: 36px !important; }
     }
     @media (max-width: 480px) {
       .hero-actions { flex-direction: column; }
@@ -1201,13 +1203,14 @@
         <a href="services/index.html">Services</a>
         <a href="dvi.html">DVI</a>
         <a href="gallery.html">Our Work</a>
+        <a href="#contact">Contact</a>
         <div class="nav-dropdown">
-          <a href="#contact" class="nav-dropdown-trigger">
-            Contact
+          <a href="#" class="nav-dropdown-trigger" onclick="return false;">
+            More
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </a>
           <div class="nav-dropdown-menu">
-            <a href="#contact">Contact Us</a>
+            <a href="about.html">About Us</a>
             <a href="questionnaire.html">Send a Questionnaire</a>
           </div>
         </div>
@@ -1222,7 +1225,8 @@
       <a href="services/index.html" class="mobile-link">Services</a>
       <a href="dvi.html" class="mobile-link">DVI</a>
       <a href="gallery.html" class="mobile-link">Our Work</a>
-      <a href="#contact" class="mobile-link">Contact Us</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+      <a href="about.html" class="mobile-link">About Us</a>
       <a href="questionnaire.html" class="mobile-link" style="color:var(--blue);">Send a Questionnaire</a>
       <button onclick="onShowBooking('d811f176-fc1e-4265-bf18-2e6584ebf630')" class="btn btn-primary" style="margin-top:4px; border:none; cursor:pointer; justify-content:center;">Book Online</button>
       <a href="tel:5733787300" class="btn btn-primary">Call or Text 573-378-7300</a>
@@ -1412,56 +1416,26 @@
         </div>
       </div>
 
-      <div class="about-grid">
-        <div class="about-img-wrap reveal">
-          <img
-            src="Photos/Team Photo.JPG"
-            data-lb="Photos/Team Photo.JPG"
-            alt="The Auto Tech Services team"
-          />
-          <div class="about-img-badge">
-            Our Team
-            <span>Versailles, MO · Since 2010</span>
+      <!-- About teaser -->
+      <div class="reveal" style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; margin-top:56px;">
+        <div>
+          <span class="section-label">About Us</span>
+          <h2 class="section-heading">Family-Owned Since 2010</h2>
+          <p class="section-sub" style="margin-bottom:32px;">A family-owned shop committed to honest work, fair pricing, and treating every customer like a neighbor — because most of our customers are.</p>
+          <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <a href="about.html" class="btn btn-primary">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              Meet Our Team
+            </a>
+            <a href="#contact" class="btn btn-outline">Schedule Service</a>
           </div>
         </div>
-        <div class="about-content reveal">
-          <span class="section-label">About Us</span>
-          <h2 class="section-heading">Honest Service, Backed by Experience</h2>
-          <p class="section-sub">
-            Auto Tech Services is a family-owned and operated repair facility proudly serving the Versailles, MO community. Our certified and highly trained team is committed to keeping your vehicle safe and reliable.
-          </p>
-          <p class="section-sub" style="margin-top:12px;">
-            We're grateful for the opportunity to serve our customers and strive to be a trustworthy solution for all your automotive needs.
-          </p>
-
-          <div class="about-features">
-            <div class="about-feature">
-              <div class="about-feature-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div class="about-feature-text">ASE Certified Technicians</div>
-            </div>
-            <div class="about-feature">
-              <div class="about-feature-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div class="about-feature-text">Loaner Cars Available</div>
-            </div>
-            <div class="about-feature">
-              <div class="about-feature-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div class="about-feature-text">Transparent Pricing</div>
-            </div>
-            <div class="about-feature">
-              <div class="about-feature-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div class="about-feature-text">Community-Focused</div>
-            </div>
+        <div style="position:relative; border-radius:12px; overflow:hidden;">
+          <img src="Photos/Team Photo.JPG" alt="The Auto Tech Services team" style="width:100%; height:auto; border-radius:12px;" />
+          <div style="position:absolute; bottom:20px; left:20px; background:var(--blue); color:#fff; border-radius:10px; padding:14px 18px; font-weight:700; font-size:14px;">
+            Our Team
+            <span style="display:block; font-size:11px; font-weight:500; opacity:0.85; margin-top:2px;">Versailles, MO · Since 2010</span>
           </div>
-
-          <a href="#contact" class="btn btn-primary">Schedule Service</a>
         </div>
       </div>
     </div>
@@ -1633,6 +1607,92 @@
     </div>
   </section>
 
+  <!-- ═══ REVIEWS ═══ -->
+  <section id="reviews" style="padding:100px 0; background:var(--dark-card);">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:56px;">
+        <span class="section-label">Customer Reviews</span>
+        <h2 class="section-heading">What Our Community Says</h2>
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-top:10px;">
+          <span style="color:#f59e0b; font-size:22px; letter-spacing:2px;">★★★★★</span>
+          <span style="color:var(--white); font-weight:700; font-size:16px;">5.0</span>
+          <span style="color:var(--muted); font-size:14px;">· 5-star rated on Google</span>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:40px;">
+
+        <!-- Josh Schuck -->
+        <div class="reveal" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:28px; display:flex; flex-direction:column;">
+          <div style="color:#f59e0b; font-size:17px; margin-bottom:16px; letter-spacing:2px;">★★★★★</div>
+          <p style="font-size:14px; color:var(--text); line-height:1.75; flex:1; margin-bottom:24px;">"We have been taking our vehicles to Auto Tech for over 15 years. They do great work — very honest, very reasonably priced, and super friendly. Would highly recommend them for all your Auto Service needs."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="width:36px; height:36px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0;">J</div>
+            <div><div style="font-weight:700; color:var(--white); font-size:14px;">Josh Schuck</div><div style="font-size:12px; color:var(--muted);">Google Review</div></div>
+          </div>
+        </div>
+
+        <!-- Kylan Weaver -->
+        <div class="reveal" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:28px; display:flex; flex-direction:column;">
+          <div style="color:#f59e0b; font-size:17px; margin-bottom:16px; letter-spacing:2px;">★★★★★</div>
+          <p style="font-size:14px; color:var(--text); line-height:1.75; flex:1; margin-bottom:24px;">"This place is fantastic! I was in a pinch to get my car aligned, and they were booked full the day I needed it done, but they worked it into the schedule anyway. Absolutely great people and service! Highly recommend!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="width:36px; height:36px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0;">K</div>
+            <div><div style="font-weight:700; color:var(--white); font-size:14px;">Kylan Weaver</div><div style="font-size:12px; color:var(--muted);">Google Review</div></div>
+          </div>
+        </div>
+
+        <!-- Robert Siegfried -->
+        <div class="reveal" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:28px; display:flex; flex-direction:column;">
+          <div style="color:#f59e0b; font-size:17px; margin-bottom:16px; letter-spacing:2px;">★★★★★</div>
+          <p style="font-size:14px; color:var(--text); line-height:1.75; flex:1; margin-bottom:24px;">"I was 200 miles from home and heard a noise in the front end. John met me at the door and genuinely listened. Merlin took time out of his busy schedule to drive my truck and figured out it was a bad tire. Clean, professional and polite. If I'm ever in the area again, they're the shop to go to."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="width:36px; height:36px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0;">R</div>
+            <div><div style="font-weight:700; color:var(--white); font-size:14px;">Robert Siegfried</div><div style="font-size:12px; color:var(--muted);">Google Review</div></div>
+          </div>
+        </div>
+
+        <!-- Courtney May -->
+        <div class="reveal" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:28px; display:flex; flex-direction:column;">
+          <div style="color:#f59e0b; font-size:17px; margin-bottom:16px; letter-spacing:2px;">★★★★★</div>
+          <p style="font-size:14px; color:var(--text); line-height:1.75; flex:1; margin-bottom:24px;">"From the moment I arrived they greeted me with a smile and explained everything thoroughly. I love that they inspect the vehicle and give a detailed outline of what's in good standing, what needs monitoring, and what needs immediate attention. Office was very clean, staff so polite. Overall 10/10 experience — highly recommend!"</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="width:36px; height:36px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0;">C</div>
+            <div><div style="font-weight:700; color:var(--white); font-size:14px;">Courtney May</div><div style="font-size:12px; color:var(--muted);">Google Review</div></div>
+          </div>
+        </div>
+
+        <!-- Gaby Juarez -->
+        <div class="reveal" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:28px; display:flex; flex-direction:column;">
+          <div style="color:#f59e0b; font-size:17px; margin-bottom:16px; letter-spacing:2px;">★★★★★</div>
+          <p style="font-size:14px; color:var(--text); line-height:1.75; flex:1; margin-bottom:24px;">"Truly top-notch customer service from start to finish. Their digital vehicle inspection is sent right to your phone — photos, videos, clear explanations. John even gave each of my kids a teddy bear, which absolutely made their day. We're new to Morgan County and Auto Tech Services has absolutely earned our trust."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="width:36px; height:36px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0;">G</div>
+            <div><div style="font-weight:700; color:var(--white); font-size:14px;">Gaby Juarez</div><div style="font-size:12px; color:var(--muted);">Google Review</div></div>
+          </div>
+        </div>
+
+        <!-- James Bruner -->
+        <div class="reveal" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:28px; display:flex; flex-direction:column;">
+          <div style="color:#f59e0b; font-size:17px; margin-bottom:16px; letter-spacing:2px;">★★★★★</div>
+          <p style="font-size:14px; color:var(--text); line-height:1.75; flex:1; margin-bottom:24px;">"Melvin was my point of contact and he was very prompt, attentive, and personable. The way I received all the info via text messages and a link was amazing. A print-out of everything and a small teddy bear with the company logo were waiting in my seat. Never in all my years has a shop done something like what Auto Tech does from start to finish."</p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="width:36px; height:36px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0;">J</div>
+            <div><div style="font-weight:700; color:var(--white); font-size:14px;">James Bruner</div><div style="font-size:12px; color:var(--muted);">Google Review</div></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reveal" style="text-align:center;">
+        <a href="https://www.google.com/search?q=Auto+Tech+Services+Versailles+MO#lrd=0x87c4d7b0c0c0c0c1:0x1,1" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Read All Reviews on Google
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ CONTACT ═══ -->
   <section id="contact">
     <div class="container">
@@ -1795,7 +1855,7 @@
           <h4>Explore</h4>
           <ul>
             <li><a href="#services">Services</a></li>
-            <li><a href="#about">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
             <li><a href="gallery.html">Our Work</a></li>
             <li><a href="dvi.html">Digital Inspection (DVI)</a></li>
             <li><a href="#contact">Contact</a></li>
