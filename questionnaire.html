@@ -80,7 +80,7 @@
     .q-wrap { padding: 52px 0 80px; }
 
     /* Tabs */
-    .q-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 32px; background: var(--dark-card); border-radius: 12px; padding: 6px; border: 1px solid rgba(255,255,255,0.07); }
+    .q-tabs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 32px; background: var(--dark-card); border-radius: 12px; padding: 6px; border: 1px solid rgba(255,255,255,0.07); }
     .q-tab { padding: 11px 8px; border-radius: 8px; border: none; background: none; color: var(--muted); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; text-align: center; font-family: 'Inter', sans-serif; line-height: 1.3; }
     .q-tab:hover { color: var(--text); background: rgba(255,255,255,0.05); }
     .q-tab.active { background: var(--blue); color: var(--white); box-shadow: 0 4px 16px rgba(69,167,232,0.3); }
@@ -325,6 +325,7 @@
           <button class="q-tab" data-tab="cooling" role="tab">Engine Cooling</button>
           <button class="q-tab" data-tab="hvac" role="tab">Heater &amp; AC</button>
           <button class="q-tab" data-tab="electrical" role="tab">Electrical</button>
+          <button class="q-tab" data-tab="fluid" role="tab">Fluid Leak &amp; Consumption</button>
         </div>
 
         <form action="https://formspree.io/f/xeevndqw" method="POST" id="q-form">
@@ -759,6 +760,182 @@
             </div>
 
           </div><!-- /electrical -->
+
+          <!-- ══ FLUID LEAK & CONSUMPTION ══ -->
+          <div class="q-panel" id="panel-fluid">
+
+            <div class="q-card">
+              <div class="q-card-title">Which Fluid(s) Are You Losing? (check all that apply)</div>
+              <div class="q-grid q-grid-3">
+                <label class="q-check"><input type="checkbox" name="fl_fluid" value="Engine oil" /><span>Engine oil</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_fluid" value="Coolant / antifreeze" /><span>Coolant / antifreeze</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_fluid" value="Transmission fluid" /><span>Transmission fluid</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_fluid" value="Brake fluid" /><span>Brake fluid</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_fluid" value="Power steering fluid" /><span>Power steering fluid</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_fluid" value="Differential / axle fluid" /><span>Differential / axle fluid</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_fluid" value="Fuel" /><span>Fuel</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_fluid" value="Not sure — something is dripping" /><span>Not sure — something is dripping</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Is It a Leak, Consumption, or Both?</div>
+              <div class="q-radio-row">
+                <label class="q-radio"><input type="radio" name="fl_type" value="Visible drip or puddle under vehicle" /><span>Visible drip or puddle under vehicle</span></label>
+                <label class="q-radio"><input type="radio" name="fl_type" value="Fluid disappearing with no visible drip" /><span>Fluid disappearing — no visible drip</span></label>
+                <label class="q-radio"><input type="radio" name="fl_type" value="Both — leaking and using more than normal" /><span>Both — leaking &amp; using more than normal</span></label>
+                <label class="q-radio"><input type="radio" name="fl_type" value="Not sure" /><span>Not sure</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Engine Oil Consumption — Fill Out If You're Losing Oil</div>
+              <p class="q-sub">How often are you adding oil?</p>
+              <div class="q-radio-row" style="margin-bottom:16px;">
+                <label class="q-radio"><input type="radio" name="fl_oil_freq" value="Every tank of gas or more often" /><span>Every tank of gas or more often</span></label>
+                <label class="q-radio"><input type="radio" name="fl_oil_freq" value="Every 500–1,000 miles" /><span>Every 500–1,000 miles</span></label>
+                <label class="q-radio"><input type="radio" name="fl_oil_freq" value="Every 1,000–2,000 miles" /><span>Every 1,000–2,000 miles</span></label>
+                <label class="q-radio"><input type="radio" name="fl_oil_freq" value="Every 2,000–3,000 miles" /><span>Every 2,000–3,000 miles</span></label>
+                <label class="q-radio"><input type="radio" name="fl_oil_freq" value="Only at oil changes — not adding between" /><span>Only at oil changes</span></label>
+                <label class="q-radio"><input type="radio" name="fl_oil_freq" value="N/A — not losing oil" /><span>N/A</span></label>
+              </div>
+              <p class="q-sub">How much do you add each time?</p>
+              <div class="q-radio-row" style="margin-bottom:16px;">
+                <label class="q-radio"><input type="radio" name="fl_oil_qty" value="Less than 1 quart" /><span>Less than 1 quart</span></label>
+                <label class="q-radio"><input type="radio" name="fl_oil_qty" value="About 1 quart" /><span>About 1 quart</span></label>
+                <label class="q-radio"><input type="radio" name="fl_oil_qty" value="More than 1 quart" /><span>More than 1 quart</span></label>
+                <label class="q-radio"><input type="radio" name="fl_oil_qty" value="N/A" /><span>N/A</span></label>
+              </div>
+              <p class="q-sub">Oil pressure warning light</p>
+              <div class="q-radio-row">
+                <label class="q-radio"><input type="radio" name="fl_oil_light" value="On steady" /><span>On steady</span></label>
+                <label class="q-radio"><input type="radio" name="fl_oil_light" value="Flickers occasionally" /><span>Flickers occasionally</span></label>
+                <label class="q-radio"><input type="radio" name="fl_oil_light" value="Not on" /><span>Not on</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Visible Leak — Location &amp; Appearance</div>
+              <p class="q-sub">Where is the fluid showing up on the ground?</p>
+              <div class="q-grid q-grid-3" style="margin-bottom:16px;">
+                <label class="q-check"><input type="checkbox" name="fl_location" value="Front of vehicle" /><span>Front of vehicle</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_location" value="Center — under engine or transmission" /><span>Center — engine / transmission</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_location" value="Rear of vehicle" /><span>Rear of vehicle</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_location" value="Driver side" /><span>Driver side</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_location" value="Passenger side" /><span>Passenger side</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_location" value="Hard to tell" /><span>Hard to tell</span></label>
+              </div>
+              <p class="q-sub">What color is the fluid on the ground?</p>
+              <div class="q-grid q-grid-3" style="margin-bottom:16px;">
+                <label class="q-check"><input type="checkbox" name="fl_color" value="Black or dark brown" /><span>Black or dark brown</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_color" value="Reddish or pink" /><span>Reddish or pink</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_color" value="Bright green, orange, or yellow" /><span>Bright green / orange / yellow</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_color" value="Clear or light yellow" /><span>Clear or light yellow</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_color" value="Dark amber or brown (not black)" /><span>Dark amber or brown</span></label>
+                <label class="q-check"><input type="checkbox" name="fl_color" value="Rainbow sheen on pavement" /><span>Rainbow sheen on pavement</span></label>
+              </div>
+              <p class="q-sub">How severe is the visible leak?</p>
+              <div class="q-radio-row">
+                <label class="q-radio"><input type="radio" name="fl_severity" value="Just a few drops after sitting" /><span>Just a few drops after sitting</span></label>
+                <label class="q-radio"><input type="radio" name="fl_severity" value="Small puddle after sitting overnight" /><span>Small puddle after sitting overnight</span></label>
+                <label class="q-radio"><input type="radio" name="fl_severity" value="Large puddle after sitting" /><span>Large puddle after sitting</span></label>
+                <label class="q-radio"><input type="radio" name="fl_severity" value="Actively dripping while running" /><span>Actively dripping while running</span></label>
+                <label class="q-radio"><input type="radio" name="fl_severity" value="N/A — no visible drip" /><span>N/A — no visible drip</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Smoke &amp; Smell</div>
+              <div class="q-yn-list">
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Blue or gray smoke from the exhaust (indicates burning oil)</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="fl_smoke_blue" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_smoke_blue" value="No" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_smoke_blue" value="Occasionally" /> Occasionally</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">White smoke or steam from the exhaust (indicates coolant or condensation)</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="fl_smoke_white" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_smoke_white" value="No" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_smoke_white" value="Occasionally" /> Occasionally</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Smoke or steam coming from under the hood</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="fl_smoke_hood" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_smoke_hood" value="No" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_smoke_hood" value="Occasionally" /> Occasionally</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Burning oil smell</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="fl_smell_oil" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_smell_oil" value="No" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_smell_oil" value="Sometimes" /> Sometimes</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Sweet or syrupy smell (indicates coolant)</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="fl_smell_sweet" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_smell_sweet" value="No" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_smell_sweet" value="Sometimes" /> Sometimes</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Fuel smell inside the cabin or outside the vehicle</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="fl_smell_fuel" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_smell_fuel" value="No" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_smell_fuel" value="Sometimes" /> Sometimes</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">History &amp; Details</div>
+              <div class="q-yn-list">
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Is the problem getting worse over time?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="fl_worse" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_worse" value="No" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_worse" value="Not sure" /> Not sure</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Is the fluid loss worse after the engine warms up?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="fl_warm" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_warm" value="No" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="fl_warm" value="Not sure" /> Not sure</label>
+                  </div>
+                </div>
+              </div>
+              <hr class="q-divider" />
+              <div class="q-row" style="margin-bottom:14px;">
+                <div class="q-field">
+                  <label class="q-label" for="fl-duration">How long has this been going on?</label>
+                  <input class="q-input" type="text" id="fl-duration" name="Fluid — How long" placeholder="e.g. Past 3 months, noticed after last oil change" />
+                </div>
+              </div>
+              <div class="q-field" style="margin-bottom:14px;">
+                <label class="q-label" for="fl-recent-work">Any recent repairs, fluid changes, or work done on the vehicle?</label>
+                <input class="q-input" type="text" id="fl-recent-work" name="Fluid — Recent work" placeholder="e.g. Oil change 500 miles ago, new head gasket last year" />
+              </div>
+              <div class="q-field">
+                <label class="q-label" for="fl-desc">Describe it in your own words — the more detail, the better</label>
+                <textarea class="q-textarea" id="fl-desc" name="Fluid — Description" placeholder="Where you notice it, when it seems worse, anything else that seems related..."></textarea>
+              </div>
+            </div>
+
+          </div><!-- /fluid leak & consumption -->
 
           <div class="q-submit-wrap">
             <button type="submit" class="btn btn-primary">
