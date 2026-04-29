@@ -700,6 +700,49 @@
       font-style: italic;
     }
 
+    /* ─── Light report card overrides ─── */
+    .report-card {
+      background: #ffffff;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.12);
+    }
+    .report-card .report-shop-header { border-bottom-color: rgba(0,0,0,0.08); }
+    .report-card .report-shop-name { color: #1a2535; }
+    .report-card .report-shop-info,
+    .report-card .report-ro-detail { color: #4a6580; }
+    .report-card .report-vehicle-strip { border-bottom-color: rgba(0,0,0,0.08); }
+    .report-card .report-vehicle-name { color: #1a2535; }
+    .report-card .report-vehicle-sub { color: #4a6580; }
+    .report-card .vin-hidden { background: rgba(0,0,0,0.08); }
+    .report-card .report-health { border-bottom-color: rgba(0,0,0,0.08); }
+    .report-card .health-title,
+    .report-card .health-stat-label { color: #4a6580; }
+    .report-card .health-donut::after { background: #ffffff; }
+    .report-card .health-donut-label { color: #1a2535; }
+    .report-card .health-dot.na { background: rgba(0,0,0,0.15); }
+    .report-card .health-stat-count { color: #1a2535; }
+    .report-card .rating-key {
+      background: rgba(0,0,0,0.03);
+      border-bottom-color: rgba(0,0,0,0.08);
+    }
+    .report-card .rating-key-item { color: #4a6580; }
+    .report-card .inspect-section { border-bottom-color: rgba(0,0,0,0.08); }
+    .report-card .inspect-section-header {
+      background: rgba(0,0,0,0.03);
+      border-bottom-color: rgba(0,0,0,0.06);
+    }
+    .report-card .inspect-section-header:hover { background: rgba(0,0,0,0.05); }
+    .report-card .inspect-section-title { color: #1a2535; }
+    .report-card .inspect-section-toggle { color: #4a6580; }
+    .report-card .inspect-item { border-bottom-color: rgba(0,0,0,0.05); }
+    .report-card .inspect-item:hover { background: rgba(0,0,0,0.02); }
+    .report-card .status-icon.na { background: rgba(0,0,0,0.06); }
+    .report-card .inspect-item-name { color: #1a2535; }
+    .report-card .inspect-item-finding { color: #4a6580; }
+    .report-card .report-disclaimer {
+      color: rgba(0,0,0,0.35);
+      border-top-color: rgba(0,0,0,0.08);
+    }
+
     /* ─── CTA ─── */
     #dvi-cta {
       padding: 80px 0;
@@ -795,17 +838,13 @@
   <nav id="nav">
     <div class="container nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Auto Tech Services Home">
-        <img
-          src="https://img1.wsimg.com/isteam/ip/d6d77ac7-cfc3-4df6-aa07-492a58c0a00e/Auto%20Tech%20Logo%201.png/:/rs=h:75,cg:true,m/qt=q:100/ll"
-          alt="Auto Tech Services"
-        />
+        <img src="https://img1.wsimg.com/isteam/ip/d6d77ac7-cfc3-4df6-aa07-492a58c0a00e/Auto%20Tech%20Logo%201.png/:/rs=h:75,cg:true,m/qt=q:100/ll" alt="Auto Tech Services" />
       </a>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="services/index.html">Services</a>
         <a href="dvi.html" class="active">DVI</a>
         <a href="gallery.html">Our Work</a>
-        <a href="index.html#contact">Contact</a>
         <div class="nav-dropdown">
           <a href="#" class="nav-dropdown-trigger" onclick="return false;">
             More
@@ -813,10 +852,10 @@
           </a>
           <div class="nav-dropdown-menu">
             <a href="about.html">About Us</a>
+            <a href="index.html#contact">Contact Us</a>
             <a href="questionnaire.html">Send a Questionnaire</a>
           </div>
         </div>
-      </div>
       </div>
       <a href="tel:5733787300" class="btn-book-nav"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg> 573-378-7300</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -828,10 +867,9 @@
       <a href="services/index.html" class="mobile-link">Services</a>
       <a href="dvi.html" class="mobile-link active">DVI</a>
       <a href="gallery.html" class="mobile-link">Our Work</a>
-      <a href="index.html#contact" class="mobile-link">Contact</a>
       <a href="about.html" class="mobile-link">About Us</a>
+      <a href="index.html#contact" class="mobile-link">Contact Us</a>
       <a href="questionnaire.html" class="mobile-link" style="color:var(--blue);">Send a Questionnaire</a>
-      <button onclick="onShowBooking('d811f176-fc1e-4265-bf18-2e6584ebf630')" class="btn btn-primary" style="border:none; cursor:pointer; justify-content:center;">Book Online</button>
       <a href="tel:5733787300" class="btn btn-primary">Call or Text 573-378-7300</a>
     </div>
   </nav>

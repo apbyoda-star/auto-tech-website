@@ -32,18 +32,71 @@
   </script>
 </head>
 <body>
-  <nav id="nav"><div class="nav-inner"><a href="../index.html" class="nav-logo" aria-label="Auto Tech Services Home"><img src="https://img1.wsimg.com/isteam/ip/d6d77ac7-cfc3-4df6-aa07-492a58c0a00e/Auto%20Tech%20Logo%201.png/:/rs=h:75,cg:true,m/qt=q:100/ll" alt="Auto Tech Services" /></a>
-    <div class="nav-links"><a href="index.html">Services</a><a href="../index.html#about">About</a><a href="../gallery.html">Our Work</a><a href="../dvi.html">DVI</a><div class="nav-dropdown"><a href="../index.html#contact" class="nav-dropdown-trigger">Contact <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a><div class="nav-dropdown-menu"><a href="../index.html#contact">Contact Us</a><a href="../questionnaire.html">Send a Questionnaire</a></div></div></div>
-    <a href="tel:5733787300" class="btn-book-nav"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg> 573-378-7300</a><button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button></div>
-  <div class="mobile-menu" id="mobile-menu"><a href="index.html">Services</a><a href="../index.html#about">About</a><a href="../gallery.html">Our Work</a><a href="../dvi.html">DVI</a><a href="../index.html#contact">Contact Us</a><a href="../questionnaire.html">Send a Questionnaire</a><button onclick="onShowBooking('d811f176-fc1e-4265-bf18-2e6584ebf630')" class="btn btn-primary" style="border:none;cursor:pointer;justify-content:center;">Book Online</button><a href="tel:5733787300" class="btn btn-primary" style="justify-content:center;">Call or Text 573-378-7300</a></div></nav>
+  <nav id="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Auto Tech Services Home">
+        <img src="https://img1.wsimg.com/isteam/ip/d6d77ac7-cfc3-4df6-aa07-492a58c0a00e/Auto%20Tech%20Logo%201.png/:/rs=h:75,cg:true,m/qt=q:100/ll" alt="Auto Tech Services" />
+      </a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../services/index.html" class="active">Services</a>
+        <a href="../dvi.html">DVI</a>
+        <a href="../gallery.html">Our Work</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-dropdown-trigger" onclick="return false;">
+            More
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="../about.html">About Us</a>
+            <a href="../index.html#contact">Contact Us</a>
+            <a href="../questionnaire.html">Send a Questionnaire</a>
+          </div>
+        </div>
+      </div>
+      <a href="tel:5733787300" class="btn-book-nav"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg> 573-378-7300</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="../index.html" class="mobile-link">Home</a>
+      <a href="../services/index.html" class="mobile-link active">Services</a>
+      <a href="../dvi.html" class="mobile-link">DVI</a>
+      <a href="../gallery.html" class="mobile-link">Our Work</a>
+      <a href="../about.html" class="mobile-link">About Us</a>
+      <a href="../index.html#contact" class="mobile-link">Contact Us</a>
+      <a href="../questionnaire.html" class="mobile-link" style="color:var(--blue);">Send a Questionnaire</a>
+      <a href="tel:5733787300" class="btn btn-primary">Call or Text 573-378-7300</a>
+    </div>
+  </nav>
 
-  <div class="svc-hero"><div class="svc-hero-bg" style="background-image:url('../Photos/services%20Images/Transmission%20Service.jpg');"></div><div class="svc-hero-overlay"></div>
-    <div class="svc-hero-content"><div class="svc-breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Services</a> / Transmission Service</div><h1 class="svc-hero-title">Transmission Service</h1></div></div>
+  <div class="svc-hero">
+    <div class="svc-hero-bg" style="background-image:url('../Photos/services%20Images/Transmission%20Service.jpg');"></div>
+    <div class="svc-hero-overlay"></div>
+    <div class="svc-hero-content">
+      <div class="svc-breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Services</a> / Transmission Service</div>
+      <h1 class="svc-hero-title">Transmission Service</h1>
+    </div>
+  </div>
 
   <div class="svc-body">
-    <aside class="svc-sidebar"><div class="svc-sidebar-card"><h3>Our Services</h3>
-      <ul class="svc-sidebar-list"><li><a href="maintenance-brakes.html">Maintenance &amp; Brakes</a></li><li><a href="key-programming.html">Key Cutting &amp; Programming</a></li><li><a href="engine-repair.html">Engine Repair</a></li><li><a href="electrical-diagnosis.html">Advanced Electrical Diagnosis</a></li><li><a href="diesel-repair.html">Diesel Repair</a></li><li><a href="ac-heating.html">AC &amp; Heating</a></li><li><a href="transmission.html" class="active">Transmission Service</a></li><li><a href="loaner-cars.html">Loaner Cars &amp; Amenities</a></li></ul>
-      <div class="svc-sidebar-cta"><button class="btn btn-primary" style="width:100%;justify-content:center;border:none;" onclick="onShowBooking('d811f176-fc1e-4265-bf18-2e6584ebf630')">Book Online</button><a href="tel:5733787300" class="btn btn-outline" style="width:100%;justify-content:center;">Call or Text</a></div>
+    <aside class="svc-sidebar"><div class="svc-sidebar-card">
+      <h3>Our Services</h3>
+      <ul class="svc-sidebar-list">
+        <li><a href="maintenance-brakes.html">Maintenance &amp; Brakes</a></li>
+        <li><a href="key-programming.html">Key Cutting &amp; Programming</a></li>
+        <li><a href="engine-repair.html">Engine Repair</a></li>
+        <li><a href="electrical-diagnosis.html">Advanced Electrical Diagnosis</a></li>
+        <li><a href="diesel-repair.html">Diesel Repair</a></li>
+        <li><a href="ac-heating.html">AC &amp; Heating</a></li>
+        <li><a href="transmission.html" class="active">Transmission Service</a></li>
+        <li><a href="loaner-cars.html">Loaner Cars &amp; Amenities</a></li>
+      </ul>
+      <div class="svc-sidebar-cta">
+        <button class="btn btn-primary" style="width:100%;justify-content:center;border:none;" onclick="onShowBooking('d811f176-fc1e-4265-bf18-2e6584ebf630')">Book Online</button>
+        <a href="tel:5733787300" class="btn btn-outline" style="width:100%;justify-content:center;">Call or Text</a>
+      </div>
     </div></aside>
 
     <main class="svc-content">
