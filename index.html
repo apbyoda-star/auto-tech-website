@@ -1664,7 +1664,7 @@
               </div>
               <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="573-555-0123" />
+                <input type="tel" id="phone" name="phone" placeholder="(573) 555-0123" maxlength="14" />
               </div>
               <div class="form-group">
                 <label for="service">Service Needed</label>
@@ -1919,6 +1919,16 @@
         }
       });
     }
+
+    // Phone auto-format: (XXX) XXX-XXXX
+    document.getElementById('phone').addEventListener('input', function() {
+      const digits = this.value.replace(/\D/g, '').slice(0, 10);
+      let out = '';
+      if (digits.length >= 1) out = '(' + digits.slice(0, 3);
+      if (digits.length >= 4) out += ') ' + digits.slice(3, 6);
+      if (digits.length >= 7) out += '-' + digits.slice(6, 10);
+      this.value = out;
+    });
 
     // Facility photo stack
     (function() {
