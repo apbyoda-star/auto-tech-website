@@ -80,7 +80,7 @@
     .q-wrap { padding: 52px 0 80px; }
 
     /* Tabs */
-    .q-tabs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 32px; background: var(--dark-card); border-radius: 12px; padding: 6px; border: 1px solid rgba(255,255,255,0.07); }
+    .q-tabs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 32px; background: var(--dark-card); border-radius: 12px; padding: 6px; border: 1px solid rgba(255,255,255,0.07); }
     .q-tab { padding: 11px 8px; border-radius: 8px; border: none; background: none; color: var(--muted); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; text-align: center; font-family: 'Inter', sans-serif; line-height: 1.3; }
     .q-tab:hover { color: var(--text); background: rgba(255,255,255,0.05); }
     .q-tab.active { background: var(--blue); color: var(--white); box-shadow: 0 4px 16px rgba(69,167,232,0.3); }
@@ -326,6 +326,7 @@
           <button class="q-tab" data-tab="hvac" role="tab">Heater &amp; AC</button>
           <button class="q-tab" data-tab="electrical" role="tab">Electrical</button>
           <button class="q-tab" data-tab="fluid" role="tab">Fluid Leak &amp; Consumption</button>
+          <button class="q-tab" data-tab="driveability" role="tab">Driveability</button>
         </div>
 
         <form action="https://formspree.io/f/xeevndqw" method="POST" id="q-form">
@@ -936,6 +937,204 @@
             </div>
 
           </div><!-- /fluid leak & consumption -->
+
+          <!-- ══ DRIVEABILITY & ENGINE PERFORMANCE ══ -->
+          <div class="q-panel" id="panel-driveability">
+
+            <div class="q-card">
+              <div class="q-card-title">What Are You Experiencing? (check all that apply)</div>
+              <div class="q-grid q-grid-3">
+                <label class="q-check"><input type="checkbox" name="dv_symptom" value="Hard to start — cold engine" /><span>Hard to start — cold</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_symptom" value="Hard to start — warm or hot engine" /><span>Hard to start — warm / hot</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_symptom" value="Won't start at all" /><span>Won't start at all</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_symptom" value="Rough idle / shaking at idle" /><span>Rough idle / shaking</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_symptom" value="Stalling at idle" /><span>Stalling at idle</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_symptom" value="Stalling while driving" /><span>Stalling while driving</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_symptom" value="Hesitation or stumble when accelerating" /><span>Hesitation / stumble when accelerating</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_symptom" value="Engine surging — RPMs fluctuating on their own" /><span>Engine surging / RPMs hunting</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_symptom" value="Misfiring / bucking / jerking" /><span>Misfiring / bucking / jerking</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_symptom" value="Loss of power — won't pull like it used to" /><span>Loss of power</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_symptom" value="Poor fuel economy" /><span>Poor fuel economy</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_symptom" value="Backfire or popping" /><span>Backfire / popping</span></label>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Starting — Fill Out If You're Having Trouble Starting</div>
+              <p class="q-sub">What happens when you turn the key or push the button?</p>
+              <div class="q-radio-row" style="margin-bottom:16px;">
+                <label class="q-radio"><input type="radio" name="dv_crank" value="Cranks normally but won't fire" /><span>Cranks normally but won't fire</span></label>
+                <label class="q-radio"><input type="radio" name="dv_crank" value="Cranks slowly — sounds weak" /><span>Cranks slowly / sounds weak</span></label>
+                <label class="q-radio"><input type="radio" name="dv_crank" value="Click but won't crank" /><span>Just clicks — won't crank</span></label>
+                <label class="q-radio"><input type="radio" name="dv_crank" value="Nothing — completely dead" /><span>Nothing — completely dead</span></label>
+                <label class="q-radio"><input type="radio" name="dv_crank" value="N/A — no starting issue" /><span>N/A</span></label>
+              </div>
+              <p class="q-sub">When is it hard to start?</p>
+              <div class="q-radio-row" style="margin-bottom:16px;">
+                <label class="q-radio"><input type="radio" name="dv_start_when" value="Only on a cold engine — first start of the day" /><span>Cold engine only</span></label>
+                <label class="q-radio"><input type="radio" name="dv_start_when" value="Only when warm or hot" /><span>Warm / hot engine only</span></label>
+                <label class="q-radio"><input type="radio" name="dv_start_when" value="Both cold and warm" /><span>Both cold and warm</span></label>
+                <label class="q-radio"><input type="radio" name="dv_start_when" value="Doesn't matter — always hard to start" /><span>Always hard to start</span></label>
+                <label class="q-radio"><input type="radio" name="dv_start_when" value="N/A" /><span>N/A</span></label>
+              </div>
+              <p class="q-sub">How long does it crank before starting?</p>
+              <div class="q-radio-row" style="margin-bottom:16px;">
+                <label class="q-radio"><input type="radio" name="dv_crank_time" value="1–2 seconds" /><span>1–2 seconds</span></label>
+                <label class="q-radio"><input type="radio" name="dv_crank_time" value="3–5 seconds" /><span>3–5 seconds</span></label>
+                <label class="q-radio"><input type="radio" name="dv_crank_time" value="More than 5 seconds" /><span>More than 5 seconds</span></label>
+                <label class="q-radio"><input type="radio" name="dv_crank_time" value="Sometimes won't start at all" /><span>Sometimes won't start at all</span></label>
+                <label class="q-radio"><input type="radio" name="dv_crank_time" value="N/A" /><span>N/A</span></label>
+              </div>
+              <div class="q-yn-list">
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Does holding the gas pedal down while cranking help it start?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="dv_gas_hold" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_gas_hold" value="No" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_gas_hold" value="Haven't tried" /> Haven't tried</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Idle Quality</div>
+              <p class="q-sub">How would you describe the idle?</p>
+              <div class="q-grid" style="margin-bottom:16px;">
+                <label class="q-check"><input type="checkbox" name="dv_idle" value="Rough or shaking" /><span>Rough / shaking</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_idle" value="RPMs surging up and down on their own" /><span>RPMs surging up and down</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_idle" value="Idle is very low — almost stalls" /><span>Very low — almost stalls</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_idle" value="Idle is unusually high" /><span>Unusually high idle</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_idle" value="Stalls at idle" /><span>Stalls at idle</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_idle" value="Idle is fine — problem only happens driving" /><span>Idle is fine — problem only while driving</span></label>
+              </div>
+              <div class="q-yn-list">
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Does the idle smooth out after the engine fully warms up?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="dv_idle_warm" value="Yes — smooths out when warm" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_idle_warm" value="No — rough all the time" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_idle_warm" value="Gets worse when warm" /> Gets worse when warm</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_idle_warm" value="Not sure" /> Not sure</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Does the rough idle or stalling happen more when in gear vs. in Park / Neutral?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="dv_idle_gear" value="Worse in gear" /> Worse in gear</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_idle_gear" value="Same in Park or Drive" /> Same either way</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_idle_gear" value="N/A" /> N/A</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Acceleration &amp; Under Load</div>
+              <p class="q-sub">When does the hesitation, stumble, or misfire occur?</p>
+              <div class="q-grid q-grid-3" style="margin-bottom:16px;">
+                <label class="q-check"><input type="checkbox" name="dv_accel_when" value="Just off idle — first press of the gas" /><span>Just off idle — first press of gas</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_accel_when" value="Light acceleration — steady cruise" /><span>Light acceleration / steady cruise</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_accel_when" value="Mid-range acceleration" /><span>Mid-range acceleration</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_accel_when" value="Hard acceleration / wide open throttle" /><span>Hard acceleration / wide open throttle</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_accel_when" value="Merging onto highway" /><span>Merging onto highway</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_accel_when" value="Going uphill" /><span>Going uphill / under load</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_accel_when" value="At highway cruise speed" /><span>At highway cruise speed</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_accel_when" value="Doesn't matter — happens any time" /><span>Any time / doesn't matter</span></label>
+              </div>
+              <div class="q-yn-list">
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Does it feel like the engine cuts out or falls on its face momentarily?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="dv_cutout" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_cutout" value="No" /> No</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Does it feel like the engine is misfiring — bucking or jerking unevenly?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="dv_misfire_feel" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_misfire_feel" value="No" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_misfire_feel" value="Sometimes" /> Sometimes</label>
+                  </div>
+                </div>
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Does it feel like the transmission is slipping or not shifting correctly?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="dv_trans_slip" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_trans_slip" value="No" /> No</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_trans_slip" value="Not sure" /> Not sure</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Check Engine Light &amp; Codes</div>
+              <p class="q-sub">Check engine / Service Engine Soon light status</p>
+              <div class="q-radio-row" style="margin-bottom:16px;">
+                <label class="q-radio"><input type="radio" name="dv_cel" value="On steady" /><span>On steady</span></label>
+                <label class="q-radio"><input type="radio" name="dv_cel" value="Flashing or blinking" /><span>Flashing / blinking</span></label>
+                <label class="q-radio"><input type="radio" name="dv_cel" value="Was on — now off" /><span>Was on — now off</span></label>
+                <label class="q-radio"><input type="radio" name="dv_cel" value="Not on" /><span>Not on</span></label>
+              </div>
+              <div class="q-yn-list">
+                <div class="q-yn-row">
+                  <span class="q-yn-label">Has the vehicle been scanned for diagnostic codes?</span>
+                  <div class="q-yn-options">
+                    <label class="q-yn-option"><input type="radio" name="dv_scanned" value="Yes" /> Yes</label>
+                    <label class="q-yn-option"><input type="radio" name="dv_scanned" value="No" /> No</label>
+                  </div>
+                </div>
+              </div>
+              <div class="q-field" style="margin-top:14px;">
+                <label class="q-label" for="dv-codes">If scanned — what codes came up? (e.g. P0300, P0171)</label>
+                <input class="q-input" type="text" id="dv-codes" name="Driveability — Codes" placeholder="e.g. P0300, P0171 — or 'misfire' if you don't have the exact code" />
+              </div>
+            </div>
+
+            <div class="q-card">
+              <div class="q-card-title">Smoke, Smell &amp; Conditions</div>
+              <p class="q-sub">Any smoke from the exhaust?</p>
+              <div class="q-grid q-grid-3" style="margin-bottom:16px;">
+                <label class="q-check"><input type="checkbox" name="dv_smoke" value="Black smoke (indicates running rich / excess fuel)" /><span>Black smoke</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_smoke" value="Blue or gray smoke (indicates burning oil)" /><span>Blue / gray smoke</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_smoke" value="White smoke or steam (indicates coolant or condensation)" /><span>White smoke / steam</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_smoke" value="No smoke" /><span>No smoke</span></label>
+              </div>
+              <p class="q-sub">Any unusual smells?</p>
+              <div class="q-grid" style="margin-bottom:16px;">
+                <label class="q-check"><input type="checkbox" name="dv_smell" value="Rotten egg / sulfur smell" /><span>Rotten egg / sulfur</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_smell" value="Raw fuel smell" /><span>Raw fuel smell</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_smell" value="Burning smell" /><span>Burning smell</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_smell" value="Sweet / coolant smell" /><span>Sweet / coolant smell</span></label>
+              </div>
+              <p class="q-sub">Outside temperature when the problem occurs</p>
+              <div class="q-grid" style="margin-bottom:16px;">
+                <label class="q-check"><input type="checkbox" name="dv_temp" value="Cold / below freezing" /><span>Cold / below freezing</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_temp" value="Cool (32–50°F)" /><span>Cool (32–50°F)</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_temp" value="Warm (50–75°F)" /><span>Warm (50–75°F)</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_temp" value="Hot (75°F+)" /><span>Hot (75°F+)</span></label>
+                <label class="q-check"><input type="checkbox" name="dv_temp" value="Any temperature" /><span>Any temperature</span></label>
+              </div>
+              <hr class="q-divider" />
+              <div class="q-row" style="margin-bottom:14px;">
+                <div class="q-field">
+                  <label class="q-label" for="dv-duration">How long has this been going on?</label>
+                  <input class="q-input" type="text" id="dv-duration" name="Driveability — How long" placeholder="e.g. Started about 2 weeks ago, got worse after the cold snap" />
+                </div>
+              </div>
+              <div class="q-field" style="margin-bottom:14px;">
+                <label class="q-label" for="dv-recent-work">Any recent repairs or maintenance? What fuel grade do you use?</label>
+                <input class="q-input" type="text" id="dv-recent-work" name="Driveability — Recent work and fuel" placeholder="e.g. New plugs 6 months ago, always use 87 regular" />
+              </div>
+              <div class="q-field">
+                <label class="q-label" for="dv-desc">Describe it in your own words — the more detail, the better</label>
+                <textarea class="q-textarea" id="dv-desc" name="Driveability — Description" placeholder="When it happens, how severe, any patterns you've noticed, anything that makes it better or worse..."></textarea>
+              </div>
+            </div>
+
+          </div><!-- /driveability -->
 
           <div class="q-submit-wrap">
             <button type="submit" class="btn btn-primary">
