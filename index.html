@@ -1646,13 +1646,7 @@
         <div class="contact-form-wrap reveal">
           <div id="form-container">
             <div class="form-title">Send Us a Message</div>
-            <form
-              id="contact-form"
-              action="https://formspree.io/f/xeevndqw"
-              method="POST"
-            >
-              <input type="hidden" name="_replyto" value="service@autotechmo.com" />
-              <input type="hidden" name="_subject" value="New Website Inquiry — Auto Tech Services" />
+            <form id="contact-form">
 
               <div class="form-row">
                 <div class="form-group">
@@ -1887,7 +1881,7 @@
       });
     }, { passive: true });
 
-    // ─── Contact form (AJAX — stays on page) ───
+    // ─── Contact form ───
     const form = document.getElementById('contact-form');
     if (form) {
       form.addEventListener('submit', async function(e) {
@@ -1897,10 +1891,17 @@
         btn.disabled = true;
         btn.innerHTML = 'Sending&hellip;';
         try {
-          const res = await fetch(form.action, {
+          const res = await fetch('/api/submit-contact', {
             method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fname:   document.getElementById('fname').value.trim(),
+              lname:   document.getElementById('lname').value.trim(),
+              email:   document.getElementById('email').value.trim(),
+              phone:   document.getElementById('phone').value.trim(),
+              service: document.getElementById('service').value,
+              message: document.getElementById('message').value.trim(),
+            })
           });
           if (res.ok) {
             document.getElementById('form-container').style.display = 'none';
