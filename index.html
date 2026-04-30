@@ -642,6 +642,13 @@
       gap: 16px;
       margin-bottom: 56px;
     }
+    .about-teaser-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 56px;
+    }
     .culture-strip {
       background: var(--dark-card);
       border: 1px solid rgba(255,255,255,0.08);
@@ -1147,7 +1154,8 @@
       .dvi-teaser-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
       #reviews > .container > div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
 
-      #about .reveal[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; gap: 36px !important; }
+      #hero { background-attachment: scroll; }
+      .about-teaser-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
     }
     @media (max-width: 480px) {
       .hero-actions { flex-direction: column; }
@@ -1419,7 +1427,7 @@
       </div>
 
       <!-- About teaser -->
-      <div class="reveal" style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; margin-top:56px;">
+      <div class="reveal about-teaser-grid">
         <div>
           <span class="section-label">About Us</span>
           <h2 class="section-heading">Family-Owned Since 2010</h2>
