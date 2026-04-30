@@ -535,17 +535,6 @@
     #about .about-feature-text,
     #about .facility-copy p { color: #4a6070; }
     #about .facility-copy strong { color: #1a2535; }
-    #about .culture-strip {
-      background: rgba(28, 41, 61, 0.62);
-      border-color: rgba(69,167,232,0.3);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-    }
-    #about .culture-label {
-      color: #ffffff;
-      font-size: 22px;
-      letter-spacing: 0.06em;
-      margin-bottom: 14px;
-    }
     #about .statement-title {
       color: #ffffff;
       font-size: 22px;
@@ -569,42 +558,12 @@
       margin-top: 0;
       padding-top: 0;
     }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .about-img-wrap {
-      position: relative;
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
     .about-img-wrap img {
       width: 100%;
       height: auto;
       object-fit: contain;
       border-radius: var(--radius);
       display: block;
-    }
-    .about-img-badge {
-      position: absolute;
-      bottom: 24px;
-      left: 24px;
-      background: var(--blue);
-      color: var(--white);
-      border-radius: 10px;
-      padding: 16px 20px;
-      font-weight: 700;
-      font-size: 15px;
-      box-shadow: var(--shadow);
-    }
-    .about-img-badge span {
-      display: block;
-      font-size: 11px;
-      font-weight: 500;
-      opacity: 0.85;
-      margin-top: 2px;
     }
 
     .about-content .section-sub { max-width: 100%; margin-bottom: 24px; }
@@ -649,35 +608,6 @@
       gap: 64px;
       align-items: center;
       margin-top: 56px;
-    }
-    .culture-strip {
-      background: var(--dark-card);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius);
-      padding: 22px 32px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .culture-strip::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--blue) 0%, rgba(69,167,232,0.15) 100%);
-    }
-    .culture-label {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-    .culture-text {
-      font-size: 15px;
-      color: var(--text);
-      line-height: 1.6;
     }
     .statement-card {
       background: rgba(69,167,232,0.07);
@@ -728,17 +658,6 @@
       font-style: italic;
       color: var(--white);
       line-height: 1.8;
-    }
-
-    .mission-box {
-      background: rgba(69,167,232,0.08);
-      border-left: 4px solid var(--blue);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      padding: 20px 24px;
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-style: italic;
     }
     .about-facility {
       display: grid;
@@ -801,29 +720,6 @@
       .facility-stack { width: 220px; height: 220px; }
     }
     /* Clickable photo lightbox */
-    img[data-lb] { cursor: zoom-in; transition: filter 0.2s ease; }
-    img[data-lb]:hover { filter: brightness(1.1); }
-    .photo-lb-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.9); z-index: 9000;
-      align-items: center; justify-content: center; padding: 24px;
-    }
-    .photo-lb-overlay.open { display: flex; }
-    .photo-lb-overlay img {
-      max-width: 100%; max-height: 90vh;
-      object-fit: contain; border-radius: 8px;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.7);
-    }
-    .photo-lb-close {
-      position: fixed; top: 18px; right: 18px;
-      width: 42px; height: 42px; border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
-      color: #fff; font-size: 20px; line-height: 1;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: background 0.2s ease;
-    }
-    .photo-lb-close:hover { background: rgba(255,255,255,0.25); }
 
     /* ═══════════════════════════════════════════════
        WARRANTY BANNER
@@ -1135,7 +1031,6 @@
        RESPONSIVE
     ═══════════════════════════════════════════════ */
     @media (max-width: 1023px) {
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .about-statements { flex-direction: column; }
       .contact-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -1153,8 +1048,6 @@
       .form-row { grid-template-columns: 1fr; }
       .contact-form-wrap { padding: 24px; }
       .dvi-teaser-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-      #reviews > .container > div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
-
       #hero { background-attachment: scroll; }
       .about-teaser-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
     }
@@ -1162,6 +1055,29 @@
       .hero-actions { flex-direction: column; }
       .hero-actions .btn { justify-content: center; }
       .trust-item span { display: none; }
+    }
+
+    /* ── Elfsight review card overrides ── */
+    .eapps-google-reviews-item-card,
+    .eapps-google-reviews-list-item .eapps-google-reviews-item-card,
+    [class*="eapps-google-reviews"] [class*="item-card"],
+    [class*="eapps-google-reviews"] [class*="review-card"] {
+      background: #ffffff !important;
+      color: #1a2535 !important;
+    }
+    [class*="eapps-google-reviews"] [class*="item-text"],
+    [class*="eapps-google-reviews"] [class*="review-text"],
+    [class*="eapps-google-reviews"] [class*="item-body"] {
+      color: #374151 !important;
+    }
+    [class*="eapps-google-reviews"] [class*="item-name"],
+    [class*="eapps-google-reviews"] [class*="reviewer-name"] {
+      color: #1a2535 !important;
+    }
+    [class*="eapps-google-reviews"] [class*="item-date"],
+    [class*="eapps-google-reviews"] [class*="review-date"],
+    [class*="eapps-google-reviews"] [class*="item-source"] {
+      color: #6b7280 !important;
     }
   </style>
   <script type="application/ld+json">
@@ -1320,7 +1236,7 @@
       <div class="services-grid">
 
         <a class="service-card-link" href="services/maintenance-brakes.html">
-        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Oil%20Change.jpg')">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Oil%20Change.webp')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M4.93 4.93a10 10 0 000 14.14"/></svg></div>
             <div class="service-name">Maintenance &amp; Brakes</div></div>
@@ -1331,7 +1247,7 @@
         </a>
 
         <a class="service-card-link" href="services/key-programming.html">
-        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Key%20programming%20card%20.JPG')">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Key%20programming%20card%20.webp')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 2-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
             <div class="service-name">Key Cutting &amp; Programming</div></div>
@@ -1342,7 +1258,7 @@
         </a>
 
         <a class="service-card-link" href="services/engine-repair.html">
-        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Engine%20.jpg')">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Engine%20.webp')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
             <div class="service-name">Engine Repair</div></div>
@@ -1364,7 +1280,7 @@
         </a>
 
         <a class="service-card-link" href="services/diesel-repair.html">
-        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Diesel%20Repair.jpg')">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Diesel%20Repair.webp')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
             <div class="service-name">Diesel Repair</div></div>
@@ -1375,7 +1291,7 @@
         </a>
 
         <a class="service-card-link" href="services/ac-heating.html">
-        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/A%3Ac%20System%20Service.jpg')">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/A%3Ac%20System%20Service.webp')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
             <div class="service-name">AC &amp; Heating</div></div>
@@ -1386,7 +1302,7 @@
         </a>
 
         <a class="service-card-link" href="services/transmission.html">
-        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Transmission%20Service.jpg')">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Transmission%20Service.webp')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><path d="M3 6h4l2 4h8l2-4h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div>
             <div class="service-name">Transmission Service</div></div>
@@ -1397,7 +1313,7 @@
         </a>
 
         <a class="service-card-link" href="services/loaner-cars.html">
-        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Loaner%20Car.jpg')">
+        <div class="service-card reveal" style="--svc-bg: url('Photos/services%20Images/Loaner%20Car.webp')">
           <div class="service-card-top">
             <div><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><line x1="13" y1="16" x2="17" y2="16"/></svg></div>
             <div class="service-name">Loaner Cars Available</div></div>
@@ -1436,7 +1352,7 @@
           </a>
         </div>
         <div style="position:relative; border-radius:12px; overflow:hidden;">
-          <img src="Photos/Team Photo.JPG" alt="The Auto Tech Services team" style="width:100%; height:auto; border-radius:12px;" />
+          <img src="Photos/Team Photo.webp" alt="The Auto Tech Services team" style="width:100%; height:auto; border-radius:12px;" />
           <div style="position:absolute; bottom:20px; left:20px; background:var(--blue); color:#fff; border-radius:10px; padding:14px 18px; font-weight:700; font-size:14px;">
             Our Team
             <span style="display:block; font-size:11px; font-weight:500; opacity:0.85; margin-top:2px;">Versailles, MO · Since 2010</span>
@@ -1462,13 +1378,13 @@
         <div class="facility-stack-wrap">
           <div class="facility-stack" id="facilityStack" aria-label="Browse facility photos">
             <div class="fstack-card">
-              <img src="Photos/Waiting%20Room%20and%20Reception%20area/A7301838.JPG" alt="Complimentary coffee station">
+              <img src="Photos/Waiting%20Room%20and%20Reception%20area/A7301838.webp" alt="Complimentary coffee station">
             </div>
             <div class="fstack-card">
-              <img src="Photos/Waiting%20Room%20and%20Reception%20area/A7301836.JPG" alt="Clean and comfortable waiting room">
+              <img src="Photos/Waiting%20Room%20and%20Reception%20area/A7301836.webp" alt="Clean and comfortable waiting room">
             </div>
             <div class="fstack-card">
-              <img src="Photos/Waiting%20Room%20and%20Reception%20area/Reception%201.JPG" alt="Auto Tech Services reception area">
+              <img src="Photos/Waiting%20Room%20and%20Reception%20area/Reception%201.webp" alt="Auto Tech Services reception area">
             </div>
           </div>
         </div>
@@ -1503,15 +1419,15 @@
       </div>
       <div class="teaser-grid">
         <div class="teaser-img reveal">
-          <img src="Photos/Gallery Images/A7301847.JPG" alt="Technician working under the hood of a Ford F-250" loading="lazy" />
+          <img src="Photos/Gallery Images/A7301847.webp" alt="Technician working under the hood of a Ford F-250" />
           <div class="teaser-img-overlay"></div>
         </div>
         <div class="teaser-img reveal">
-          <img src="Photos/Gallery Images/Key programming card .JPG" alt="OEM key programming setup with Autel programmer" loading="lazy" />
+          <img src="Photos/Gallery Images/Key programming card .webp" alt="OEM key programming setup with Autel programmer" />
           <div class="teaser-img-overlay"></div>
         </div>
         <div class="teaser-img reveal">
-          <img src="Photos/Gallery Images/IMG_2566.JPG" alt="Ford diesel truck on lift with cab separated from frame" loading="lazy" />
+          <img src="Photos/Gallery Images/IMG_2566.webp" alt="Ford diesel truck on lift with cab separated from frame" />
           <div class="teaser-img-overlay"></div>
         </div>
       </div>
@@ -1613,30 +1529,7 @@
   </section>
 
   <!-- ═══ REVIEWS ═══ -->
-  <style>
-    /* ── Elfsight review card overrides ── */
-    .eapps-google-reviews-item-card,
-    .eapps-google-reviews-list-item .eapps-google-reviews-item-card,
-    [class*="eapps-google-reviews"] [class*="item-card"],
-    [class*="eapps-google-reviews"] [class*="review-card"] {
-      background: #ffffff !important;
-      color: #1a2535 !important;
-    }
-    [class*="eapps-google-reviews"] [class*="item-text"],
-    [class*="eapps-google-reviews"] [class*="review-text"],
-    [class*="eapps-google-reviews"] [class*="item-body"] {
-      color: #374151 !important;
-    }
-    [class*="eapps-google-reviews"] [class*="item-name"],
-    [class*="eapps-google-reviews"] [class*="reviewer-name"] {
-      color: #1a2535 !important;
-    }
-    [class*="eapps-google-reviews"] [class*="item-date"],
-    [class*="eapps-google-reviews"] [class*="review-date"],
-    [class*="eapps-google-reviews"] [class*="item-source"] {
-      color: #6b7280 !important;
-    }
-  </style>
+
 
   <section id="reviews" style="padding:100px 0; background:var(--dark-card);">
     <div class="container">
@@ -1842,11 +1735,6 @@
     </div>
   </footer>
 
-  <!-- Photo lightbox overlay (must be before the script block) -->
-  <div class="photo-lb-overlay" id="photoLb">
-    <button class="photo-lb-close" id="photoLbClose" aria-label="Close photo">&#x2715;</button>
-    <img id="photoLbImg" src="" alt="">
-  </div>
 
   <script>
     // ─── Nav scroll effect ───
@@ -2029,27 +1917,6 @@
       stackEl.addEventListener('touchend',   e => { if (tx - e.changedTouches[0].clientX > 35) advance(); }, { passive: true });
     })();
 
-    // Photo lightbox
-    (function() {
-      const overlay = document.getElementById('photoLb');
-      const lbImg   = document.getElementById('photoLbImg');
-      document.querySelectorAll('img[data-lb]').forEach(img => {
-        img.addEventListener('click', () => {
-          lbImg.src = img.dataset.lb;
-          lbImg.alt = img.alt;
-          overlay.classList.add('open');
-          document.body.style.overflow = 'hidden';
-        });
-      });
-      function closeLb() {
-        overlay.classList.remove('open');
-        lbImg.src = '';
-        document.body.style.overflow = '';
-      }
-      document.getElementById('photoLbClose').addEventListener('click', closeLb);
-      overlay.addEventListener('click', e => { if (e.target === overlay) closeLb(); });
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
-    })();
   </script>
 
   <script>
